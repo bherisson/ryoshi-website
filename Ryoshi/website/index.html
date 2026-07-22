@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RYOSHI — Mauritian Metalcore</title>
+<meta name="description" content="RYOSHI — Mauritian metalcore band. Crushing riffs, atmospheric melodies, raw emotion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Intro overlay -->
+<div id="intro" class="intro">
+  <img src="assets/logo.jpeg" alt="Ryoshi logo" class="intro-logo" id="introLogo">
+</div>
+
+<!-- Ambient particles -->
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-logo-wrap">
+    <img src="assets/logo.jpeg" alt="Ryoshi" class="nav-logo" id="navLogo">
+    <span>RYOSHI</span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about" data-cursor="link">About</a>
+    <a href="#band" data-cursor="link">Band</a>
+    <a href="#music" data-cursor="link">Music</a>
+    <a href="#merch" data-cursor="link">Merch</a>
+    <a href="#gallery" data-cursor="link">Gallery</a>
+    <a href="#shows" data-cursor="link">Shows</a>
+    <a href="#contact" data-cursor="link">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-bg-wrap" id="heroBgWrap">
+    <img src="assets/background.jpg" alt="Ryoshi live" class="hero-bg" id="heroBg">
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+  </div>
+
+  <div class="hero-content">
+    <img src="assets/logo.jpeg" alt="Ryoshi logo" class="hero-logo" id="heroLogo">
+    <h1 class="hero-title">RYOSHI</h1>
+    <p class="hero-sub">Mauritian Metalcore</p>
+    <p class="hero-tag">Listen. Watch. Follow.</p>
+    <div class="hero-buttons">
+      <a href="#" class="hero-btn" data-cursor="link">Spotify</a>
+      <a href="#" class="hero-btn" data-cursor="link">YouTube</a>
+      <a href="#" class="hero-btn" data-cursor="link">Instagram</a>
+      <a href="#" class="hero-btn" data-cursor="link">Facebook</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- BIG TYPE INTERSTITIAL -->
+<div class="big-type-wrap reveal-scale" data-outline="RYOSHI">
+  <h2 class="big-type">WE DON'T<br>PLAY SAFE</h2>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section about">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— About —</span>
+    <p class="about-text reveal-lines">
+      Ryoshi is a Mauritian metalcore band blending crushing riffs, atmospheric melodies and raw emotion. Inspired by modern metal while forging their own identity, the band delivers an intense live experience built on energy, precision and passion.
+    </p>
+    <a href="#band" class="text-btn reveal-line" data-cursor="link">Read More <span>→</span></a>
+  </div>
+  <div class="bg-outline-text">RYOSHI</div>
+</section>
+
+<!-- BAND -->
+<section id="band" class="section band">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— Meet the Band —</span>
+    <h2 class="section-title reveal-line">MADE IN<br>MAURITIUS</h2>
+  </div>
+
+  <div class="band-grid">
+
+    <article class="band-card reveal-scale" data-member="felix" tabindex="0">
+      <img src="assets/felix.jpg" alt="Felix — Vocals" loading="lazy">
+      <div class="band-card-info">
+        <h3>Felix</h3>
+        <p>Vocals</p>
+      </div>
+      <span class="band-card-plus">+</span>
+    </article>
+
+    <article class="band-card reveal-scale" data-member="alison" tabindex="0">
+      <img src="assets/alison.jpg" alt="Alison — Guitar" loading="lazy">
+      <div class="band-card-info">
+        <h3>Alison</h3>
+        <p>Guitar</p>
+      </div>
+      <span class="band-card-plus">+</span>
+    </article>
+
+    <article class="band-card reveal-scale" data-member="bertrand" tabindex="0">
+      <img src="assets/bertrand.jpg" alt="Bertrand — Bass" loading="lazy">
+      <div class="band-card-info">
+        <h3>Bertrand</h3>
+        <p>Bass</p>
+      </div>
+      <span class="band-card-plus">+</span>
+    </article>
+
+    <article class="band-card reveal-scale" data-member="william" tabindex="0">
+      <img src="assets/william.jpg" alt="William — Drums" loading="lazy">
+      <div class="band-card-info">
+        <h3>William</h3>
+        <p>Drums</p>
+      </div>
+      <span class="band-card-plus">+</span>
+    </article>
+
+  </div>
+</section>
+
+<!-- MEMBER MODAL -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" id="memberModal">
+    <button class="modal-close" id="modalClose" aria-label="Close" data-cursor="link">✕</button>
+    <div class="modal-media">
+      <img id="modalImg" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <h3 id="modalName"></h3>
+      <p class="modal-role" id="modalRole"></p>
+      <div class="modal-block">
+        <h4>Biography</h4>
+        <p id="modalBio"></p>
+      </div>
+      <div class="modal-block">
+        <h4>Equipment</h4>
+        <p id="modalGear"></p>
+      </div>
+      <div class="modal-block">
+        <h4>Favourite Bands</h4>
+        <p id="modalFav"></p>
+      </div>
+      <div class="modal-socials" id="modalSocials">
+        <a href="#" data-cursor="link">Instagram</a>
+        <a href="#" data-cursor="link">TikTok</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MUSIC -->
+<section id="music" class="section music">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— Music —</span>
+    <h2 class="section-title reveal-line">LATEST<br>SINGLES</h2>
+
+    <div class="music-grid">
+      <div class="music-embed reveal-scale">
+        <div class="embed-placeholder spotify-placeholder">
+          <span class="embed-icon">♫</span>
+          <p>Spotify player embed</p>
+          <small>Drop your Spotify track/album embed code here once live.</small>
+        </div>
+      </div>
+      <div class="music-embed reveal-scale">
+        <div class="embed-placeholder youtube-placeholder">
+          <span class="embed-icon">▶</span>
+          <p>YouTube video embed</p>
+          <small>Drop your official video / lyric video iframe here once live.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCH -->
+<section id="merch" class="section merch">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— Merchandise —</span>
+    <h2 class="section-title reveal-line">BUILT FOR<br>THE STAGE</h2>
+
+    <div class="merch-grid">
+      <article class="merch-card reveal-scale">
+        <img src="assets/merch2.jpg" alt="Ryoshi t-shirts and caps">
+        <div class="merch-overlay">
+          <h3>T-Shirts &amp; Caps</h3>
+          <span class="merch-tag">Coming Soon</span>
+        </div>
+      </article>
+      <article class="merch-card reveal-scale">
+        <img src="assets/merch.jpg" alt="Ryoshi bundle offer">
+        <div class="merch-overlay">
+          <h3>Bundle Offer</h3>
+          <span class="merch-tag">Coming Soon</span>
+        </div>
+      </article>
+      <article class="merch-card placeholder-card reveal-scale">
+        <div class="merch-overlay static">
+          <h3>Hoodies</h3>
+          <span class="merch-tag">Coming Soon</span>
+        </div>
+      </article>
+      <article class="merch-card placeholder-card reveal-scale">
+        <div class="merch-overlay static">
+          <h3>Stickers</h3>
+          <span class="merch-tag">Coming Soon</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section gallery">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— Gallery —</span>
+    <h2 class="section-title reveal-line">ON &amp; OFF<br>STAGE</h2>
+  </div>
+  <div class="masonry" id="masonry">
+    <div class="masonry-item reveal-scale" data-full="assets/felix.jpg"><img src="assets/felix.jpg" alt="Felix live" loading="lazy"></div>
+    <div class="masonry-item reveal-scale" data-full="assets/william.jpg"><img src="assets/william.jpg" alt="William live" loading="lazy"></div>
+    <div class="masonry-item reveal-scale" data-full="assets/alison.jpg"><img src="assets/alison.jpg" alt="Alison portrait" loading="lazy"></div>
+    <div class="masonry-item reveal-scale" data-full="assets/bertrand.jpg"><img src="assets/bertrand.jpg" alt="Bertrand portrait" loading="lazy"></div>
+    <div class="masonry-item reveal-scale" data-full="assets/background.jpg"><img src="assets/background.jpg" alt="Band together" loading="lazy"></div>
+    <div class="masonry-item reveal-scale" data-full="assets/merch2.jpg"><img src="assets/merch2.jpg" alt="Merch" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" data-cursor="link">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- SHOWS -->
+<section id="shows" class="section shows">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— Upcoming Shows —</span>
+    <h2 class="section-title reveal-line">LIVE &amp;<br>LOUD</h2>
+
+    <ul class="shows-list">
+      <li class="shows-item reveal-line">
+        <span class="shows-date">12 SEP</span>
+        <span class="shows-venue">Port Louis, Mauritius</span>
+        <a href="#" class="shows-link" data-cursor="link">Tickets →</a>
+      </li>
+      <li class="shows-item reveal-line">
+        <span class="shows-date">18 OCT</span>
+        <span class="shows-venue">Saint-Denis, Réunion</span>
+        <a href="#" class="shows-link" data-cursor="link">Tickets →</a>
+      </li>
+      <li class="shows-item reveal-line">
+        <span class="shows-date">25 NOV</span>
+        <span class="shows-venue">Curepipe, Mauritius</span>
+        <a href="#" class="shows-link" data-cursor="link">Tickets →</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="section partners">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— Partners —</span>
+    <div class="partners-row reveal-scale">
+      <span class="partner-logo">STUDIO808</span>
+      <span class="partner-logo">BLACKROCK GEAR</span>
+      <span class="partner-logo">ISLAND SOUND CO.</span>
+      <span class="partner-logo">DARK WAVE MEDIA</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— Contact —</span>
+    <h2 class="section-title reveal-line">GET IN<br>TOUCH</h2>
+
+    <div class="contact-grid">
+      <div class="contact-block reveal-line">
+        <h4>Booking</h4>
+        <a href="mailto:booking@ryoshiband.com" data-cursor="link">booking@ryoshiband.com</a>
+      </div>
+      <div class="contact-block reveal-line">
+        <h4>Management</h4>
+        <a href="mailto:management@ryoshiband.com" data-cursor="link">management@ryoshiband.com</a>
+      </div>
+      <div class="contact-block reveal-line">
+        <h4>General Enquiries</h4>
+        <a href="mailto:hello@ryoshiband.com" data-cursor="link">hello@ryoshiband.com</a>
+      </div>
+    </div>
+
+    <div class="contact-socials reveal-line">
+      <a href="#" data-cursor="link">Instagram</a>
+      <a href="#" data-cursor="link">Facebook</a>
+      <a href="#" data-cursor="link">YouTube</a>
+      <a href="#" data-cursor="link">Spotify</a>
+      <a href="#" data-cursor="link">TikTok</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="assets/logo.jpeg" alt="Ryoshi" class="footer-logo">
+  <div class="footer-socials">
+    <a href="#" data-cursor="link">Spotify</a>
+    <a href="#" data-cursor="link">YouTube</a>
+    <a href="#" data-cursor="link">Instagram</a>
+    <a href="#" data-cursor="link">Facebook</a>
+    <a href="#" data-cursor="link">TikTok</a>
+  </div>
+  <p class="footer-copy">© 2026 Ryoshi. All rights reserved. Mauritius.</p>
+</footer>
+
+<!-- SECRET WALLPAPER PAGE -->
+<div class="secret-page" id="secretPage">
+  <button class="secret-close" id="secretClose" data-cursor="link">✕ Close</button>
+  <h2>SECRET STASH</h2>
+  <p>You found it. Wallpapers, for the faithful.</p>
+  <div class="secret-grid">
+    <a href="assets/background.jpg" download class="secret-item" data-cursor="link"><img src="assets/background.jpg" alt="Wallpaper 1"><span>Download</span></a>
+    <a href="assets/felix.jpg" download class="secret-item" data-cursor="link"><img src="assets/felix.jpg" alt="Wallpaper 2"><span>Download</span></a>
+    <a href="assets/william.jpg" download class="secret-item" data-cursor="link"><img src="assets/william.jpg" alt="Wallpaper 3"><span>Download</span></a>
+  </div>
+</div>
+
+<div class="easter-toast" id="easterToast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
