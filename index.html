@@ -26,15 +26,13 @@
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#hero" class="nav-logo-wrap">
-    <img src="assets/logo.jpeg" alt="Ryoshi" class="nav-logo" id="navLogo">
-    <span>RYOSHI</span>
+    <img src="assets/logo-main-trim.png" alt="Ryoshi" class="nav-logo" id="navLogo">
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <div class="nav-links" id="navLinks">
-    <a href="#about" data-cursor="link">About</a>
+    <a href="about.html" data-cursor="link">About</a>
     <a href="#band" data-cursor="link">Band</a>
     <a href="#music" data-cursor="link">Music</a>
-    <a href="#merch" data-cursor="link">Merch</a>
     <a href="#gallery" data-cursor="link">Gallery</a>
     <a href="#shows" data-cursor="link">Shows</a>
     <a href="#contact" data-cursor="link">Contact</a>
@@ -44,21 +42,22 @@
 <!-- HERO -->
 <section id="hero" class="hero">
   <div class="hero-bg-wrap" id="heroBgWrap">
-    <img src="assets/background.jpg" alt="Ryoshi live" class="hero-bg" id="heroBg">
+    <img src="assets/background3.jpg" alt="Ryoshi live" class="hero-bg" id="heroBg">
     <div class="hero-overlay"></div>
     <div class="hero-grain"></div>
   </div>
 
   <div class="hero-content">
-    <img src="assets/logo.jpeg" alt="Ryoshi logo" class="hero-logo" id="heroLogo">
-    <h1 class="hero-title">RYOSHI</h1>
-    <p class="hero-sub">Mauritian Metalcore</p>
+    <div class="hero-emblem" id="heroLogo">
+      <img src="assets/logo-main-trim.png" alt="Ryoshi logo" class="hero-logo">
+      <img src="assets/logo-ryoshi-trim.png" alt="Ryoshi" class="hero-title-logo">
+    </div>
     <p class="hero-tag">Listen. Watch. Follow.</p>
     <div class="hero-buttons">
-      <a href="#" class="hero-btn" data-cursor="link">Spotify</a>
-      <a href="#" class="hero-btn" data-cursor="link">YouTube</a>
-      <a href="#" class="hero-btn" data-cursor="link">Instagram</a>
-      <a href="#" class="hero-btn" data-cursor="link">Facebook</a>
+      <a href="#" class="hero-icon-btn" data-cursor="link" aria-label="Spotify"><img src="assets/icons/spotify.png" alt="Spotify"></a>
+      <a href="#" class="hero-icon-btn" data-cursor="link" aria-label="YouTube"><img src="assets/icons/youtube.png" alt="YouTube"></a>
+      <a href="#" class="hero-icon-btn" data-cursor="link" aria-label="Instagram"><img src="assets/icons/instagram.png" alt="Instagram"></a>
+      <a href="#" class="hero-icon-btn" data-cursor="link" aria-label="Facebook"><img src="assets/icons/facebook.png" alt="Facebook"></a>
     </div>
   </div>
 
@@ -80,7 +79,7 @@
     <p class="about-text reveal-lines">
       Ryoshi is a Mauritian metalcore band blending crushing riffs, atmospheric melodies and raw emotion. Inspired by modern metal while forging their own identity, the band delivers an intense live experience built on energy, precision and passion.
     </p>
-    <a href="#band" class="text-btn reveal-line" data-cursor="link">Read More <span>→</span></a>
+    <a href="about.html" class="text-btn reveal-line" data-cursor="link">Know More <span>→</span></a>
   </div>
   <div class="bg-outline-text">RYOSHI</div>
 </section>
@@ -95,7 +94,7 @@
   <div class="band-grid">
 
     <article class="band-card reveal-scale" data-member="felix" tabindex="0">
-      <img src="assets/felix.jpg" alt="Felix — Vocals" loading="lazy">
+      <img src="assets/felix2.jpg" alt="Felix — Vocals" loading="lazy">
       <div class="band-card-info">
         <h3>Felix</h3>
         <p>Vocals</p>
@@ -104,7 +103,7 @@
     </article>
 
     <article class="band-card reveal-scale" data-member="alison" tabindex="0">
-      <img src="assets/alison.jpg" alt="Alison — Guitar" loading="lazy">
+      <img src="assets/alison2.jpg" alt="Alison — Guitar" loading="lazy">
       <div class="band-card-info">
         <h3>Alison</h3>
         <p>Guitar</p>
@@ -113,7 +112,7 @@
     </article>
 
     <article class="band-card reveal-scale" data-member="bertrand" tabindex="0">
-      <img src="assets/bertrand.jpg" alt="Bertrand — Bass" loading="lazy">
+      <img src="assets/bertrand2.jpg" alt="Bertrand — Bass" loading="lazy">
       <div class="band-card-info">
         <h3>Bertrand</h3>
         <p>Bass</p>
@@ -122,7 +121,7 @@
     </article>
 
     <article class="band-card reveal-scale" data-member="william" tabindex="0">
-      <img src="assets/william.jpg" alt="William — Drums" loading="lazy">
+      <img src="assets/william2.jpg" alt="William — Drums" loading="lazy">
       <div class="band-card-info">
         <h3>William</h3>
         <p>Drums</p>
@@ -163,64 +162,41 @@
   </div>
 </div>
 
-<!-- MUSIC -->
+<!-- MUSIC / DISCOGRAPHY -->
 <section id="music" class="section music">
   <div class="section-inner">
-    <span class="eyebrow reveal-line">— Music —</span>
-    <h2 class="section-title reveal-line">LATEST<br>SINGLES</h2>
+    <span class="eyebrow reveal-line">— Discography —</span>
+    <h2 class="section-title reveal-line">THE HUNT</h2>
 
-    <div class="music-grid">
-      <div class="music-embed reveal-scale">
-        <div class="embed-placeholder spotify-placeholder">
-          <span class="embed-icon">♫</span>
-          <p>Spotify player embed</p>
-          <small>Drop your Spotify track/album embed code here once live.</small>
-        </div>
+    <div class="ep-block reveal-scale">
+      <div class="ep-art">
+        <img src="assets/thehunt-artwork.png" alt="The Hunt — Ryoshi EP artwork" loading="lazy">
       </div>
-      <div class="music-embed reveal-scale">
-        <div class="embed-placeholder youtube-placeholder">
-          <span class="embed-icon">▶</span>
-          <p>YouTube video embed</p>
-          <small>Drop your official video / lyric video iframe here once live.</small>
-        </div>
+      <div class="ep-embed">
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/52xEmiPUQriHGfkeZjbaFt?utm_source=generator&si=e802a74007244c42" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- MERCH -->
-<section id="merch" class="section merch">
-  <div class="section-inner">
-    <span class="eyebrow reveal-line">— Merchandise —</span>
-    <h2 class="section-title reveal-line">BUILT FOR<br>THE STAGE</h2>
-
-    <div class="merch-grid">
-      <article class="merch-card reveal-scale">
-        <img src="assets/merch2.jpg" alt="Ryoshi t-shirts and caps">
-        <div class="merch-overlay">
-          <h3>T-Shirts &amp; Caps</h3>
-          <span class="merch-tag">Coming Soon</span>
+    <h3 class="video-heading reveal-line">On YouTube</h3>
+    <div class="video-grid">
+      <div class="video-card reveal-scale">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/rfEKjm-heBg?si=J6zmd5GBCX5BVTRy" title="Chaosform — YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
         </div>
-      </article>
-      <article class="merch-card reveal-scale">
-        <img src="assets/merch.jpg" alt="Ryoshi bundle offer">
-        <div class="merch-overlay">
-          <h3>Bundle Offer</h3>
-          <span class="merch-tag">Coming Soon</span>
+        <p class="video-title">Chaosform</p>
+      </div>
+      <div class="video-card reveal-scale">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/uldzDDgIvms?si=fkLnBEvMFqqh3IKA" title="Altered Evolution — YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
         </div>
-      </article>
-      <article class="merch-card placeholder-card reveal-scale">
-        <div class="merch-overlay static">
-          <h3>Hoodies</h3>
-          <span class="merch-tag">Coming Soon</span>
+        <p class="video-title">Altered Evolution</p>
+      </div>
+      <div class="video-card reveal-scale">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/tB9JPksQ4Uk?si=KZFqauauX7RCkyx1" title="Project Icarus — YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
         </div>
-      </article>
-      <article class="merch-card placeholder-card reveal-scale">
-        <div class="merch-overlay static">
-          <h3>Stickers</h3>
-          <span class="merch-tag">Coming Soon</span>
-        </div>
-      </article>
+        <p class="video-title">Project Icarus</p>
+      </div>
     </div>
   </div>
 </section>
@@ -231,13 +207,20 @@
     <span class="eyebrow reveal-line">— Gallery —</span>
     <h2 class="section-title reveal-line">ON &amp; OFF<br>STAGE</h2>
   </div>
-  <div class="masonry" id="masonry">
-    <div class="masonry-item reveal-scale" data-full="assets/felix.jpg"><img src="assets/felix.jpg" alt="Felix live" loading="lazy"></div>
-    <div class="masonry-item reveal-scale" data-full="assets/william.jpg"><img src="assets/william.jpg" alt="William live" loading="lazy"></div>
-    <div class="masonry-item reveal-scale" data-full="assets/alison.jpg"><img src="assets/alison.jpg" alt="Alison portrait" loading="lazy"></div>
-    <div class="masonry-item reveal-scale" data-full="assets/bertrand.jpg"><img src="assets/bertrand.jpg" alt="Bertrand portrait" loading="lazy"></div>
-    <div class="masonry-item reveal-scale" data-full="assets/background.jpg"><img src="assets/background.jpg" alt="Band together" loading="lazy"></div>
-    <div class="masonry-item reveal-scale" data-full="assets/merch2.jpg"><img src="assets/merch2.jpg" alt="Merch" loading="lazy"></div>
+
+  <div class="slider reveal-scale" id="slider">
+    <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous" data-cursor="link">←</button>
+    <div class="slider-track" id="sliderTrack">
+      <div class="slider-item" data-full="assets/gallery/IMG_5694.JPG"><img src="assets/gallery/IMG_5694.JPG" alt="Ryoshi live 1" loading="lazy"></div>
+      <div class="slider-item" data-full="assets/gallery/IMG_5695.JPG"><img src="assets/gallery/IMG_5695.JPG" alt="Ryoshi live 2" loading="lazy"></div>
+      <div class="slider-item" data-full="assets/gallery/IMG_5697.JPG"><img src="assets/gallery/IMG_5697.JPG" alt="Ryoshi live 3" loading="lazy"></div>
+      <div class="slider-item" data-full="assets/gallery/IMG_5699.JPG"><img src="assets/gallery/IMG_5699.JPG" alt="Ryoshi live 4" loading="lazy"></div>
+      <div class="slider-item" data-full="assets/gallery/IMG_5700.JPG"><img src="assets/gallery/IMG_5700.JPG" alt="Ryoshi live 5" loading="lazy"></div>
+      <div class="slider-item" data-full="assets/gallery/IMG_5701.JPG"><img src="assets/gallery/IMG_5701.JPG" alt="Ryoshi live 6" loading="lazy"></div>
+      <div class="slider-item" data-full="assets/gallery/IMG_5706.JPG"><img src="assets/gallery/IMG_5706.JPG" alt="Ryoshi live 7" loading="lazy"></div>
+      <div class="slider-item" data-full="assets/gallery/IMG_5707.JPG"><img src="assets/gallery/IMG_5707.JPG" alt="Ryoshi live 8" loading="lazy"></div>
+    </div>
+    <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next" data-cursor="link">→</button>
   </div>
 </section>
 
@@ -255,19 +238,8 @@
 
     <ul class="shows-list">
       <li class="shows-item reveal-line">
-        <span class="shows-date">12 SEP</span>
-        <span class="shows-venue">Port Louis, Mauritius</span>
-        <a href="#" class="shows-link" data-cursor="link">Tickets →</a>
-      </li>
-      <li class="shows-item reveal-line">
-        <span class="shows-date">18 OCT</span>
-        <span class="shows-venue">Saint-Denis, Réunion</span>
-        <a href="#" class="shows-link" data-cursor="link">Tickets →</a>
-      </li>
-      <li class="shows-item reveal-line">
-        <span class="shows-date">25 NOV</span>
-        <span class="shows-venue">Curepipe, Mauritius</span>
-        <a href="#" class="shows-link" data-cursor="link">Tickets →</a>
+        <span class="shows-date">28 AUG</span>
+        <span class="shows-venue">Café du Vieux Conseil, Port-Louis, Mauritius</span>
       </li>
     </ul>
   </div>
@@ -319,7 +291,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <img src="assets/logo.jpeg" alt="Ryoshi" class="footer-logo">
+  <img src="assets/logo-main-trim.png" alt="Ryoshi" class="footer-logo">
   <div class="footer-socials">
     <a href="#" data-cursor="link">Spotify</a>
     <a href="#" data-cursor="link">YouTube</a>

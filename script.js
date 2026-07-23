@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   ringLoop();
 
-  document.querySelectorAll('a, button, .band-card, .merch-card').forEach(el => {
+  document.querySelectorAll('a, button, .band-card').forEach(el => {
     el.addEventListener('mouseenter', () => ring.classList.add('link'));
     el.addEventListener('mouseleave', () => ring.classList.remove('link'));
   });
-  document.querySelectorAll('.masonry-item img, .band-card img').forEach(el => {
+  document.querySelectorAll('.slider-item img, .band-card img, .timeline-slide img').forEach(el => {
     el.addEventListener('mouseenter', () => ring.classList.add('img'));
     el.addEventListener('mouseleave', () => ring.classList.remove('img'));
   });
@@ -50,16 +50,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroLogo = document.getElementById('heroLogo');
   const hero = document.getElementById('hero');
 
-  function onScrollHero(){
-    const h = hero.offsetHeight;
-    const p = Math.min(window.scrollY / h, 1);
-    const scale = 1.15 - (0.15 * p); // zoom out toward 1
-    heroBg.style.transform = `scale(${Math.max(scale, 1)}) translateY(${p * 40}px)`;
-    heroLogo.style.opacity = Math.max(1 - p * 2.2, 0);
-    heroLogo.style.transform = `translateY(${p * -30}px) scale(${1 - p * 0.3})`;
+  if (hero && heroBg && heroLogo){
+    function onScrollHero(){
+      const h = hero.offsetHeight;
+      const p = Math.min(window.scrollY / h, 1);
+      const scale = 1.15 - (0.15 * p); // zoom out toward 1
+      heroBg.style.transform = `scale(${Math.max(scale, 1)}) translateY(${p * 40}px)`;
+      heroLogo.style.opacity = Math.max(1 - p * 2.2, 0);
+      heroLogo.style.transform = `translateY(${p * -30}px) scale(${1 - p * 0.3})`;
+    }
+    window.addEventListener('scroll', onScrollHero, { passive: true });
+    onScrollHero();
   }
-  window.addEventListener('scroll', onScrollHero, { passive: true });
-  onScrollHero();
+
+  /* ---------- About hero parallax zoom-out ---------- */
+  const aboutHero = document.getElementById('aboutHero');
+  const aboutHeroBg = document.getElementById('aboutHeroBg');
+
+  if (aboutHero && aboutHeroBg){
+    function onScrollAboutHero(){
+      const h = aboutHero.offsetHeight;
+      const p = Math.min(window.scrollY / h, 1);
+      const scale = 1.18 - (0.18 * p);
+      aboutHeroBg.style.transform = `scale(${Math.max(scale, 1)}) translateY(${p * 50}px)`;
+    }
+    window.addEventListener('scroll', onScrollAboutHero, { passive: true });
+    onScrollAboutHero();
+  }
 
   /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll('.reveal-line, .reveal-lines, .reveal-scale');
@@ -73,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
   revealEls.forEach(el => io.observe(el));
 
-  /* ---------- Card tilt on mouse move (band + merch) ---------- */
-  document.querySelectorAll('.band-card, .merch-card').forEach(card => {
+  /* ---------- Card tilt on mouse move (band cards) ---------- */
+  document.querySelectorAll('.band-card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
       const px = (e.clientX - r.left) / r.width - 0.5;
@@ -89,25 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Member modal data ---------- */
   const members = {
     felix: {
-      name: 'Felix', role: 'Vocals', img: 'assets/felix.jpg',
+      name: 'Felix', role: 'Vocals', img: 'assets/felix2.jpg',
       bio: 'Front-man and lyricist. Felix brings the raw, guttural energy that anchors Ryoshi\'s live sound, channeling emotion into every performance.',
       gear: 'Shure SM58, in-ear monitors, custom vocal chain.',
       fav: 'Architects, Currents, Bad Omens.'
     },
     alison: {
-      name: 'Alison', role: 'Guitar', img: 'assets/alison.jpg',
+      name: 'Alison', role: 'Guitar', img: 'assets/alison2.jpg',
       bio: 'Riffs, leads, and atmosphere. Alison writes the melodic backbone that gives Ryoshi its progressive edge.',
       gear: '7-string guitar, Neural DSP Quad Cortex, EMG pickups.',
       fav: 'Periphery, Polyphia, Sylosis.'
     },
     bertrand: {
-      name: 'Bertrand', role: 'Bass', img: 'assets/bertrand.jpg',
+      name: 'Bertrand', role: 'Bass', img: 'assets/bertrand2.jpg',
       bio: 'Low-end and groove. Bertrand locks the rhythm section together and drives the heavier passages.',
       gear: '5-string bass, Darkglass preamp, Ampeg cab.',
       fav: 'Spiritbox, Northlane, Meshuggah.'
     },
     william: {
-      name: 'William', role: 'Drums', img: 'assets/william.jpg',
+      name: 'William', role: 'Drums', img: 'assets/william2.jpg',
       bio: 'Precision and power behind the kit. William\'s dynamic playing shapes every breakdown and blast.',
       gear: 'Custom hybrid kit, triggers, Zildjian cymbals.',
       fav: 'Veil of Maya, The Contortionist, Volumes.'
@@ -124,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openMember(key){
     const m = members[key];
-    if (!m) return;
+    if (!m || !modalBackdrop) return;
     modalImg.src = m.img; modalImg.alt = m.name;
     modalName.textContent = m.name;
     modalRole.textContent = m.role;
@@ -135,32 +152,120 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
   }
   function closeMember(){
+    if (!modalBackdrop) return;
     modalBackdrop.classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.querySelectorAll('.band-card').forEach(card => {
-    card.addEventListener('click', () => openMember(card.dataset.member));
-    card.addEventListener('keypress', e => { if (e.key === 'Enter') openMember(card.dataset.member); });
-  });
-  document.getElementById('modalClose').addEventListener('click', closeMember);
-  modalBackdrop.addEventListener('click', e => { if (e.target === modalBackdrop) closeMember(); });
+  if (modalBackdrop){
+    document.querySelectorAll('.band-card').forEach(card => {
+      card.addEventListener('click', () => openMember(card.dataset.member));
+      card.addEventListener('keypress', e => { if (e.key === 'Enter') openMember(card.dataset.member); });
+    });
+    document.getElementById('modalClose').addEventListener('click', closeMember);
+    modalBackdrop.addEventListener('click', e => { if (e.target === modalBackdrop) closeMember(); });
+  }
 
   /* ---------- Gallery lightbox ---------- */
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  document.querySelectorAll('.masonry-item').forEach(item => {
-    item.addEventListener('click', () => {
-      lightboxImg.src = item.dataset.full;
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
   function closeLightbox(){
+    if (!lightbox) return;
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  if (lightbox){
+    document.querySelectorAll('.slider-item').forEach(item => {
+      item.addEventListener('click', () => {
+        lightboxImg.src = item.dataset.full;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  }
+
+  /* ---------- Gallery horizontal slider arrows ---------- */
+  const sliderTrack = document.getElementById('sliderTrack');
+  const sliderPrev = document.getElementById('sliderPrev');
+  const sliderNext = document.getElementById('sliderNext');
+  if (sliderTrack && sliderPrev && sliderNext){
+    function sliderStep(){
+      const item = sliderTrack.querySelector('.slider-item');
+      return item ? item.getBoundingClientRect().width + 16 : 300;
+    }
+    sliderPrev.addEventListener('click', () => sliderTrack.scrollBy({ left: -sliderStep(), behavior: 'smooth' }));
+    sliderNext.addEventListener('click', () => sliderTrack.scrollBy({ left: sliderStep(), behavior: 'smooth' }));
+  }
+
+  /* ---------- Through the Years — pinned scroll-jacked timeline ---------- */
+  const thPinWrap = document.getElementById('thPinWrap');
+  const timelineViewport = document.getElementById('timelineViewport');
+  const timelineTrack = document.getElementById('timelineTrack');
+  const yearsTabs = document.getElementById('yearsTabs');
+
+  if (thPinWrap && timelineViewport && timelineTrack && yearsTabs){
+    const slides = Array.from(timelineTrack.querySelectorAll('.timeline-slide'));
+    const tabs = Array.from(yearsTabs.querySelectorAll('.year-tab'));
+    let horizontalDistance = 0;
+    let targetX = 0;
+    let currentX = 0;
+
+    function setActiveYear(year){
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.year === year));
+    }
+
+    function recalc(){
+      const viewportWidth = timelineViewport.clientWidth;
+      const trackWidth = timelineTrack.scrollWidth;
+      horizontalDistance = Math.max(trackWidth - viewportWidth, 0);
+      thPinWrap.style.height = (window.innerHeight + horizontalDistance) + 'px';
+    }
+
+    function updateTarget(){
+      if (horizontalDistance <= 0){ targetX = 0; return; }
+      const rect = thPinWrap.getBoundingClientRect();
+      const progress = Math.min(Math.max(-rect.top / horizontalDistance, 0), 1);
+      targetX = -progress * horizontalDistance;
+    }
+
+    function updateActiveYear(x){
+      const centerPoint = -x + timelineViewport.clientWidth / 2;
+      let current = slides[0];
+      for (const s of slides){
+        if (s.offsetLeft <= centerPoint) current = s;
+      }
+      if (current) setActiveYear(current.dataset.year);
+    }
+
+    function raf(){
+      // ease the visible position toward the scroll-driven target for a fluid, non-abrupt motion
+      currentX += (targetX - currentX) * 0.09;
+      if (Math.abs(targetX - currentX) < 0.05) currentX = targetX;
+      timelineTrack.style.transform = `translate3d(${currentX}px,0,0)`;
+      updateActiveYear(currentX);
+      requestAnimationFrame(raf);
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = slides.find(s => s.dataset.year === tab.dataset.year);
+        if (!target || horizontalDistance <= 0) return;
+        const desiredProgress = Math.min(target.offsetLeft / horizontalDistance, 1);
+        const pinRect = thPinWrap.getBoundingClientRect();
+        const absoluteTop = pinRect.top + window.scrollY;
+        const targetScrollY = absoluteTop + desiredProgress * horizontalDistance;
+        window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
+      });
+    });
+
+    recalc();
+    updateTarget();
+    currentX = targetX;
+    requestAnimationFrame(raf);
+    window.addEventListener('resize', () => { recalc(); updateTarget(); });
+    window.addEventListener('scroll', updateTarget, { passive: true });
+  }
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape'){ closeMember(); closeLightbox(); closeSecret(); }
@@ -248,8 +353,15 @@ document.addEventListener('DOMContentLoaded', () => {
       openSecret();
     }
   }
-  document.getElementById('navLogo').addEventListener('click', (e) => { e.preventDefault(); handleLogoClick(); });
-  document.getElementById('heroLogo').addEventListener('click', handleLogoClick);
+  const navLogoEl = document.getElementById('navLogo');
+  if (navLogoEl){
+    const navLogoLink = navLogoEl.closest('a');
+    navLogoEl.addEventListener('click', (e) => {
+      if (navLogoLink && navLogoLink.getAttribute('href') === '#hero') e.preventDefault();
+      handleLogoClick();
+    });
+  }
+  if (heroLogo) heroLogo.addEventListener('click', handleLogoClick);
 
   /* ---------- Secret wallpaper page ---------- */
   const secretPage = document.getElementById('secretPage');
