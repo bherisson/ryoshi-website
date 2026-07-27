@@ -35,6 +35,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- Promo form (QR / Rs 200 discount landing page) ---------- */
+  const promoForm = document.getElementById('promoForm');
+  if (promoForm){
+    // Paste the Google Apps Script Web App URL here once deployed (ends in /exec)
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtP5jjIY07Q0BhYXjrgOxHh0aWysKtDqCx3n-5DvI32QES2rKp0eU-TU97fNLLRTNx/exec';
+    const promoThankYou = document.getElementById('promoThankYou');
+    const promoSubmitBtn = promoForm.querySelector('.promo-submit');
+
+    promoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === 0){
+        alert('Form backend is not connected yet.');
+        return;
+      }
+      promoSubmitBtn.disabled = true;
+      promoSubmitBtn.textContent = 'Submitting…';
+
+      const data = new URLSearchParams();
+      data.append('name', promoForm.name.value.trim());
+      data.append('mobile', promoForm.mobile.value.trim());
+      data.append('email', promoForm.email.value.trim());
+
+      fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data })
+        .then(() => {
+          promoForm.style.display = 'none';
+          if (promoThankYou) promoThankYou.classList.add('is-visible');
+        })
+        .catch(() => {
+          promoSubmitBtn.disabled = false;
+          promoSubmitBtn.textContent = 'Claim My Discount';
+          alert('Something went wrong — please check your connection and try again.');
+        });
+    });
+  }
+
   /* ---------- Custom cursor ---------- */
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');

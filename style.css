@@ -746,6 +746,78 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 .contact-socials a{ font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color: var(--muted); transition: color .3s; }
 .contact-socials a:hover{ color: var(--fg); }
 
+/* Promo (QR discount landing page) */
+.promo-section{ text-align:center; }
+.promo-inner{ max-width: 560px; }
+.promo-lead{
+  max-width: 460px;
+  margin: 0 auto 40px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #dedad3;
+  font-weight: 300;
+}
+.promo-form{
+  display:flex;
+  flex-direction:column;
+  gap: 20px;
+  text-align:left;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.promo-field{ display:flex; flex-direction:column; gap:8px; }
+.promo-field label{
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+}
+.promo-field input{
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--fg);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 2px;
+  outline: none;
+  transition: border-color .3s;
+  cursor: text;
+}
+.promo-field input:focus{ border-color: var(--fg); }
+.promo-field input::placeholder{ color: var(--muted); opacity:.6; }
+.promo-submit{
+  margin-top: 10px;
+  padding: 16px 28px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 2px;
+  transition: background .3s, transform .3s var(--ease);
+  cursor: pointer;
+}
+.promo-submit:hover{ background: var(--accent-2); transform: translateY(-2px); }
+.promo-submit:disabled{ opacity:.6; transform:none; cursor:default; }
+.promo-note{
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+  text-align:center;
+  margin: 4px 0 0;
+}
+.promo-thankyou{
+  display:none;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.promo-thankyou.is-visible{ display:block; }
+.promo-thankyou-title{
+  font-family: var(--font-display);
+  font-size: clamp(32px, 6vw, 52px);
+  margin: 6px 0 18px;
+}
+.promo-thankyou p{ color:#dedad3; line-height:1.6; font-size:15px; }
+
 /* Footer */
 .footer{
   position: relative; z-index:2;
