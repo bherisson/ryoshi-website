@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — RYOSHI</title>
+<meta name="description" content="The story of RYOSHI — Mauritian metalcore band. From King of None to The Hunt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Intro overlay -->
+<div id="intro" class="intro">
+  <img src="assets/logo.jpeg" alt="Ryoshi logo" class="intro-logo" id="introLogo">
+</div>
+
+<!-- Ambient particles -->
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="assets/logo-main-trim.png" alt="Ryoshi" class="nav-logo" id="navLogo">
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about-intro" data-cursor="link">About</a>
+    <a href="index.html#band" data-cursor="link">Band</a>
+    <a href="index.html#music" data-cursor="link">Music</a>
+    <a href="index.html#news" data-cursor="link">News</a>
+    <a href="index.html#gallery" data-cursor="link">Gallery</a>
+    <a href="index.html#shows" data-cursor="link">Shows</a>
+    <a href="index.html#contact" data-cursor="link">Contact</a>
+  </div>
+</nav>
+
+<!-- ABOUT HERO -->
+<section id="aboutHero" class="hero about-hero">
+  <div class="hero-bg-wrap">
+    <img src="assets/about/about-background.JPG" alt="Ryoshi live" class="hero-bg" id="aboutHeroBg">
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+  </div>
+
+  <div class="hero-content about-hero-content">
+    <span class="eyebrow about-hero-label reveal-line">— About —</span>
+    <img src="assets/logo-ryoshi-trim.png" alt="Ryoshi" class="hero-title-logo hero-title-logo--big reveal-scale">
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT INTRO -->
+<section id="about-intro" class="section about-copy">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— Who We Are —</span>
+    <div class="about-copy-text">
+      <p class="reveal-line" style="transition-delay:.1s">Formed in 2018, Ryoshi was born from a shared ambition: to create music without compromise and leave a lasting artistic mark beyond the boundaries of Mauritius.</p>
+      <p class="reveal-line" style="transition-delay:.25s">Rooted in progressive metalcore, the band blends crushing riffs, atmospheric textures, technical precision and raw emotion into a sound that is both aggressive and deeply expressive. For Ryoshi, music is more than performance, it is a constant search for evolution, creativity and identity.</p>
+      <p class="reveal-line" style="transition-delay:.4s">The name Ryoshi carries a dual meaning. In Japanese, ryoshi traditionally means fisherman. Yet the band also embraces another interpretation: ryo as excel and shi as master — a philosophy of striving for excellence while mastering one's craft through dedication and creation.</p>
+      <p class="reveal-line" style="transition-delay:.55s">From local underground venues to regional festivals, Ryoshi's guiding principle has remained unchanged: push creativity further and leave a permanent trace on the Mauritian, regional and international music scene.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THROUGH THE YEARS -->
+<section id="through-years" class="section through-years">
+  <div class="section-inner">
+    <span class="eyebrow reveal-line">— Timeline —</span>
+    <h2 class="section-title reveal-line">Through the Years</h2>
+  </div>
+
+  <div class="th-pin-wrap" id="thPinWrap">
+    <div class="th-sticky" id="thSticky">
+
+      <div class="timeline-viewport" id="timelineViewport">
+        <div class="timeline-track" id="timelineTrack">
+
+      <article class="timeline-slide" data-year="2018">
+        <div class="timeline-img"><img src="assets/about/debut.jpg" alt="King of None debut" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2018 — The Beginning</span>
+          <h3>Birth of a Vision</h3>
+          <p>The band was formed under the name King of None by a group of friends united by a clear ambition: to establish themselves as a fully fledged force within the Mauritian music scene.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2018">
+        <div class="timeline-img"><img src="assets/about/1st-stage.jpg" alt="First steps on stage" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2018 — The Beginning</span>
+          <h3>First Steps on Stage</h3>
+          <p>The group began performing across the island, determined to present a distinctive and uncompromising sound to local audiences.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2018">
+        <div class="timeline-img"><img src="assets/about/ascendence.png" alt="Ascendence single artwork" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2018 — The Beginning</span>
+          <h3>First Release</h3>
+          <p>King of None unveiled its debut single, "Ascendence", accompanied by an official music video — the first concrete statement of the band's artistic identity.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2019">
+        <div class="timeline-img"><img src="assets/about/1st-urf.jpg" alt="Underground Rock Festival debut" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2019 — Breakthrough</span>
+          <h3>Underground Rock Festival Debut</h3>
+          <p>The band made its first appearance at the Underground Rock Festival, stepping onto one of the country's major stages. It was a full-scale test and a resounding success.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2019">
+        <div class="timeline-img"><img src="assets/about/reunion-kal.jpg" alt="Nuit de Kal, Réunion Island" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2019 — Breakthrough</span>
+          <h3>First International Performance</h3>
+          <p>Ryoshi left Mauritian shores for the first time to perform at Nuit de Kal in Réunion Island, sharing the stage with renowned French metal act Black Bomb A.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2019">
+        <div class="timeline-img"><img src="assets/about/studio-creation.jpg" alt="Studio creation" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2019 — Breakthrough</span>
+          <h3>A New Identity</h3>
+          <p>Upon returning to Mauritius, the band adopted the name Ryoshi, marking a major turning point in its artistic direction, musical vision and live performance philosophy.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2020">
+        <div class="timeline-img"><img src="assets/about/covid.jpg" alt="Creativity in isolation" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2020 — Resilience</span>
+          <h3>Creativity in Isolation</h3>
+          <p>As the world was struck by the COVID-19 pandemic, live music came to a halt. Despite the distance, the members remained connected and continued composing, using the period to push their creativity even further.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2022">
+        <div class="timeline-img"><img src="assets/about/comeback.jpg" alt="Back on stage" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2022 — Return</span>
+          <h3>Back on Stage</h3>
+          <p>After a long silence, Ryoshi made its long-awaited return to live performance with new material, renewed energy and a stronger sonic identity.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2023">
+        <div class="timeline-img"><img src="assets/about/altered-evolution.jpg" alt="Altered Evolution single" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2023 — Expansion</span>
+          <h3>"Altered Evolution"</h3>
+          <p>Ryoshi released the single "Altered Evolution" alongside an official music video, further refining the band's progressive metalcore signature.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2023">
+        <div class="timeline-img"><img src="assets/about/maytal-run.jpg" alt="Maytal - La Revanche, Réunion" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2023 — Expansion</span>
+          <h3>Return to Réunion</h3>
+          <p>The band travelled once again to Réunion to perform at Maytal — La Revanche, strengthening its presence on the regional scene.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2024">
+        <div class="timeline-img"><img src="assets/about/tribeca.jpg" alt="Pepcity at Tribeca Mall" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2024 — New Audiences</span>
+          <h3>From Underground to the Public Square</h3>
+          <p>Ryoshi performed at the major Pepcity event at Tribeca Mall, bringing its music to a broader mainstream audience while staying true to its roots.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2025">
+        <div class="timeline-img"><img src="assets/about/mada-flight.jpg" alt="Madagascar tour" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2025 — First Tour</span>
+          <h3>Madagascar Tour</h3>
+          <p>For the first time, Ryoshi travelled to Madagascar for a memorable three-date tour across Antananarivo, opening a new chapter in the band's international journey.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2025">
+        <div class="timeline-img"><img src="assets/about/the-hunt-launch.jpg" alt="The Hunt EP launch" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2025 — First Tour</span>
+          <h3>First EP</h3>
+          <p>Ryoshi released its debut five-track EP, The Hunt — a milestone that captured years of growth, experimentation and artistic evolution.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2026">
+        <div class="timeline-img"><img src="assets/about/mma-nomination.jpg" alt="Mauritius Music Awards nomination" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2026 — Recognition</span>
+          <h3>National Recognition</h3>
+          <p>Ryoshi received one of the strongest acknowledgements of its career by earning a nomination for "Live Band of the Year" at the Mauritius Music Awards.</p>
+        </div>
+      </article>
+
+      <article class="timeline-slide" data-year="2026">
+        <div class="timeline-img"><img src="assets/about/portal-final.png" alt="The Portal campaign" loading="lazy"></div>
+        <div class="timeline-caption">
+          <span class="timeline-year">2026 — Recognition</span>
+          <h3>The Portal</h3>
+          <p>A mysterious campaign began as "The Portal" was revealed. The message was clear: a new era was approaching, but the full story remained hidden.</p>
+        </div>
+      </article>
+
+        </div>
+      </div>
+
+      <div class="years-tabs-wrap">
+        <div class="years-tabs" id="yearsTabs">
+          <button class="year-tab active" data-year="2018" data-cursor="link">2018</button>
+          <button class="year-tab" data-year="2019" data-cursor="link">2019</button>
+          <button class="year-tab" data-year="2020" data-cursor="link">2020</button>
+          <button class="year-tab" data-year="2022" data-cursor="link">2022</button>
+          <button class="year-tab" data-year="2023" data-cursor="link">2023</button>
+          <button class="year-tab" data-year="2024" data-cursor="link">2024</button>
+          <button class="year-tab" data-year="2025" data-cursor="link">2025</button>
+          <button class="year-tab" data-year="2026" data-cursor="link">2026</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY CONTINUES -->
+<div class="big-type-wrap journey-wrap reveal-scale" data-outline="RYOSHI">
+  <span class="eyebrow">— The Journey Continues —</span>
+  <p class="journey-text">From a group of friends in 2018 to a progressive metalcore act carrying Mauritian metal beyond its shores, Ryoshi continues to evolve with the same objective that ignited the project from day one: create without limits, excel through mastery, and leave a lasting mark on the musical landscape.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="assets/logo-main-trim.png" alt="Ryoshi" class="footer-logo">
+  <div class="footer-socials">
+    <a href="https://open.spotify.com/artist/4Uqqi1n97pdr0EM11cyq5P" data-social="spotify" target="_blank" rel="noopener" data-cursor="link">Spotify</a>
+    <a href="https://www.youtube.com/@Ryoshi.official" data-social="youtube" target="_blank" rel="noopener" data-cursor="link">YouTube</a>
+    <a href="https://www.instagram.com/ryoshi.official/" data-social="instagram" target="_blank" rel="noopener" data-cursor="link">Instagram</a>
+    <a href="https://www.facebook.com/ryoshi.band" data-social="facebook" target="_blank" rel="noopener" data-cursor="link">Facebook</a>
+    <a href="https://www.tiktok.com/@ryoshi.band" data-social="tiktok" target="_blank" rel="noopener" data-cursor="link">TikTok</a>
+  </div>
+  <p class="footer-copy">© 2026 Ryoshi. All rights reserved. Mauritius.</p>
+</footer>
+
+<!-- SECRET WALLPAPER PAGE -->
+<div class="secret-page" id="secretPage">
+  <button class="secret-close" id="secretClose" data-cursor="link">✕ Close</button>
+  <h2>SECRET STASH</h2>
+  <p>You found it. Wallpapers, for the faithful.</p>
+  <div class="secret-grid">
+    <a href="assets/background3.jpg" download class="secret-item" data-cursor="link"><img src="assets/background3.jpg" alt="Wallpaper 1"><span>Download</span></a>
+    <a href="assets/about/the-hunt-launch.jpg" download class="secret-item" data-cursor="link"><img src="assets/about/the-hunt-launch.jpg" alt="Wallpaper 2"><span>Download</span></a>
+    <a href="assets/about/portal-final.png" download class="secret-item" data-cursor="link"><img src="assets/about/portal-final.png" alt="Wallpaper 3"><span>Download</span></a>
+  </div>
+</div>
+
+<div class="easter-toast" id="easterToast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

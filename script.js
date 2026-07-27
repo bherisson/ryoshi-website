@@ -7,6 +7,34 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => intro.classList.add('hide'), 1900);
   setTimeout(() => intro.remove(), 2600);
 
+  /* ---------- Social links: open native app on mobile, web otherwise ---------- */
+  const isMobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const socialApps = {
+    instagram: 'instagram://user?username=ryoshi.official',
+    facebook: 'fb://facewebmodal/f?href=https://www.facebook.com/ryoshi.band',
+    youtube: 'youtube://www.youtube.com/@Ryoshi.official',
+    spotify: 'spotify://artist/4Uqqi1n97pdr0EM11cyq5P',
+    tiktok: 'tiktok://user?username=ryoshi.band'
+  };
+  if (isMobileDevice){
+    document.querySelectorAll('[data-social]').forEach(link => {
+      const key = link.dataset.social;
+      const appUrl = socialApps[key];
+      const webUrl = link.getAttribute('href');
+      if (!appUrl || !webUrl) return;
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        let redirected = false;
+        const markRedirected = () => { redirected = true; };
+        document.addEventListener('visibilitychange', markRedirected, { once: true });
+        window.location.href = appUrl;
+        setTimeout(() => {
+          if (!redirected) window.open(webUrl, '_blank');
+        }, 1200);
+      });
+    });
+  }
+
   /* ---------- Custom cursor ---------- */
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
@@ -29,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('mouseenter', () => ring.classList.add('link'));
     el.addEventListener('mouseleave', () => ring.classList.remove('link'));
   });
-  document.querySelectorAll('.slider-item img, .band-card img, .timeline-slide img').forEach(el => {
+  document.querySelectorAll('.slider-item img, .band-card img, .timeline-slide img, .news-thumb img').forEach(el => {
     el.addEventListener('mouseenter', () => ring.classList.add('img'));
     el.addEventListener('mouseleave', () => ring.classList.remove('img'));
   });
@@ -112,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fav: 'Architects, Currents, Bad Omens.'
     },
     alison: {
-      name: 'Alison', role: 'Guitar', img: 'assets/alison2.jpg',
+      name: 'Alison', role: 'Guitar', img: 'assets/alison4.jpg',
       bio: 'Riffs, leads, and atmosphere. Alison writes the melodic backbone that gives Ryoshi its progressive edge.',
       gear: '7-string guitar, Neural DSP Quad Cortex, EMG pickups.',
       fav: 'Periphery, Polyphia, Sylosis.'
@@ -198,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderNext.addEventListener('click', () => sliderTrack.scrollBy({ left: sliderStep(), behavior: 'smooth' }));
   }
 
-  /* ---------- Through the Years — pinned scroll-jacked timeline ---------- */
+  /* ---------- Through the Years — horizontal cards, pinned ---------- */
   const thPinWrap = document.getElementById('thPinWrap');
   const timelineViewport = document.getElementById('timelineViewport');
   const timelineTrack = document.getElementById('timelineTrack');
@@ -215,8 +243,15 @@ document.addEventListener('DOMContentLoaded', () => {
       tabs.forEach(t => t.classList.toggle('active', t.dataset.year === year));
     }
 
+    // center the first slide at the very start, and the last slide at the very end,
+    // so slides reveal one-by-one, side by side, as the user scrolls
     function recalc(){
       const viewportWidth = timelineViewport.clientWidth;
+      const slideWidth = slides[0] ? slides[0].getBoundingClientRect().width : 0;
+      const sidePad = Math.max((viewportWidth - slideWidth) / 2, 20);
+      timelineTrack.style.paddingLeft = sidePad + 'px';
+      timelineTrack.style.paddingRight = sidePad + 'px';
+
       const trackWidth = timelineTrack.scrollWidth;
       horizontalDistance = Math.max(trackWidth - viewportWidth, 0);
       thPinWrap.style.height = (window.innerHeight + horizontalDistance) + 'px';
@@ -229,21 +264,25 @@ document.addEventListener('DOMContentLoaded', () => {
       targetX = -progress * horizontalDistance;
     }
 
-    function updateActiveYear(x){
+    function updateActiveSlide(x){
       const centerPoint = -x + timelineViewport.clientWidth / 2;
       let current = slides[0];
-      for (const s of slides){
-        if (s.offsetLeft <= centerPoint) current = s;
-      }
+      let bestDist = Infinity;
+      slides.forEach(s => {
+        const mid = s.offsetLeft + s.offsetWidth / 2;
+        const dist = Math.abs(mid - centerPoint);
+        if (dist < bestDist){ bestDist = dist; current = s; }
+      });
+      slides.forEach(s => s.classList.toggle('is-active', s === current));
       if (current) setActiveYear(current.dataset.year);
     }
 
     function raf(){
-      // ease the visible position toward the scroll-driven target for a fluid, non-abrupt motion
+      // ease toward the scroll-driven target for fluid, non-abrupt motion
       currentX += (targetX - currentX) * 0.09;
       if (Math.abs(targetX - currentX) < 0.05) currentX = targetX;
       timelineTrack.style.transform = `translate3d(${currentX}px,0,0)`;
-      updateActiveYear(currentX);
+      updateActiveSlide(currentX);
       requestAnimationFrame(raf);
     }
 
@@ -251,7 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
       tab.addEventListener('click', () => {
         const target = slides.find(s => s.dataset.year === tab.dataset.year);
         if (!target || horizontalDistance <= 0) return;
-        const desiredProgress = Math.min(target.offsetLeft / horizontalDistance, 1);
+        const slideCenter = target.offsetLeft + target.offsetWidth / 2;
+        const desiredX = Math.min(Math.max(slideCenter - timelineViewport.clientWidth / 2, 0), horizontalDistance);
+        const desiredProgress = desiredX / horizontalDistance;
         const pinRect = thPinWrap.getBoundingClientRect();
         const absoluteTop = pinRect.top + window.scrollY;
         const targetScrollY = absoluteTop + desiredProgress * horizontalDistance;
@@ -262,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
     recalc();
     updateTarget();
     currentX = targetX;
+    updateActiveSlide(currentX);
     requestAnimationFrame(raf);
     window.addEventListener('resize', () => { recalc(); updateTarget(); });
     window.addEventListener('scroll', updateTarget, { passive: true });
