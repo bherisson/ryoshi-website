@@ -194,6 +194,41 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
   background:
     linear-gradient(180deg, rgba(8,7,10,.55) 0%, rgba(8,7,10,.35) 35%, rgba(8,7,10,.85) 100%);
 }
+@media (max-width: 760px){
+  /* Homepage hero only: show the full group shot (all 4 members) on
+     mobile portrait instead of cropping the sides with object-fit:cover */
+  #hero .hero-bg{
+    object-fit: contain;
+    object-position: center center;
+    transform: scale(1);
+  }
+  /* Spread the hero logos so nothing overlaps the group shot on mobile:
+     main emblem pinned to the top, wordmark + tag + buttons clustered
+     at the bottom. .hero-emblem becomes display:contents so its two
+     images can be positioned independently as direct flex children. */
+  #hero .hero-content{
+    height: 100%;
+    justify-content: flex-start;
+    padding: 66px 20px 40px;
+  }
+  #hero .hero-emblem{
+    display: contents;
+  }
+  #hero .hero-logo{
+    order: 1;
+    width: min(98px, 22vw);
+    margin: 0 auto auto;
+    transition: opacity .2s linear;
+  }
+  #navLogo{ transition: opacity .2s linear; }
+  #hero .hero-title-logo{
+    order: 2;
+    width: min(260px, 68vw);
+    margin: 0 auto;
+  }
+  #hero .hero-tag{ order: 3; margin: 12px 0 14px; }
+  #hero .hero-buttons{ order: 4; }
+}
 .hero-grain{
   position:absolute; inset:0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
@@ -720,6 +755,57 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 
 /* Gallery / horizontal slider */
 .gallery .section-inner{ margin-bottom: 22px; }
+/* Homepage gallery — continuous crossfade slideshow, clickable to full gallery page */
+.gallery-crossfade{
+  display: block;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+.gallery-crossfade img{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: grayscale(.2) brightness(.82);
+  transition: opacity 1.6s ease;
+}
+.gallery-crossfade img.is-active{ opacity: 1; }
+.gallery-crossfade::after{
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,7,10,0) 55%, rgba(8,7,10,.8) 100%);
+  pointer-events: none;
+}
+.gallery-crossfade-cta{
+  position: absolute; left:50%; bottom: 22px; transform: translateX(-50%);
+  z-index: 2;
+  display: inline-flex; align-items:center; gap:8px;
+  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 4px;
+}
+.gallery-crossfade-cta span{ transition: transform .3s var(--ease); }
+.gallery-crossfade:hover .gallery-crossfade-cta span{ transform: translateX(6px); }
+
+/* Full gallery page grid */
+.gallery-page-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.gallery-page-grid .slider-item{
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  cursor: none;
+}
+
 .slider{
   position: relative;
   max-width: 1300px;

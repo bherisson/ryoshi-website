@@ -168,15 +168,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const hero = document.getElementById('hero');
 
   if (hero && heroBg && heroLogo){
+    const isNarrowViewport = () => window.innerWidth <= 760;
+    const heroMainLogoImg = heroLogo.querySelector('.hero-logo');
+    const navLogoImg = document.getElementById('navLogo');
     function onScrollHero(){
       const h = hero.offsetHeight;
       const p = Math.min(window.scrollY / h, 1);
-      const scale = 1.15 - (0.15 * p); // zoom out toward 1
-      heroBg.style.transform = `scale(${Math.max(scale, 1)}) translateY(${p * 40}px)`;
+      if (isNarrowViewport()){
+        // Mobile: image starts fully zoomed out (whole group shot visible),
+        // then gradually zooms in and fades away on scroll so it's fully
+        // gone by the time "WE DON'T PLAY SAFE" appears — no overlap.
+        const scale = 1 + (p * 0.5);
+        heroBg.style.transform = `scale(${scale})`;
+        heroBg.style.opacity = String(Math.max(1 - p * 1.5, 0));
+        // Crossfade the two "O" emblems so only one is ever visible:
+        // the big top logo fades out while the small nav logo fades in.
+        if (heroMainLogoImg) heroMainLogoImg.style.opacity = String(Math.max(1 - p * 3, 0));
+        if (navLogoImg) navLogoImg.style.opacity = String(Math.min(p * 3, 1));
+      } else {
+        const scale = 1.15 - (0.15 * p); // zoom out toward 1
+        heroBg.style.transform = `scale(${Math.max(scale, 1)}) translateY(${p * 40}px)`;
+        heroBg.style.opacity = '';
+        if (heroMainLogoImg) heroMainLogoImg.style.opacity = '';
+        if (navLogoImg) navLogoImg.style.opacity = '';
+      }
       heroLogo.style.opacity = Math.max(1 - p * 2.2, 0);
       heroLogo.style.transform = `translateY(${p * -30}px) scale(${1 - p * 0.3})`;
     }
     window.addEventListener('scroll', onScrollHero, { passive: true });
+    window.addEventListener('resize', onScrollHero);
     onScrollHero();
   }
 
@@ -313,6 +333,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     sliderPrev.addEventListener('click', () => sliderTrack.scrollBy({ left: -sliderStep(), behavior: 'smooth' }));
     sliderNext.addEventListener('click', () => sliderTrack.scrollBy({ left: sliderStep(), behavior: 'smooth' }));
+  }
+
+  /* ---------- Homepage gallery — continuous crossfade slideshow ---------- */
+  const galleryCrossfade = document.getElementById('galleryCrossfade');
+  if (galleryCrossfade){
+    const crossfadeSlides = Array.from(galleryCrossfade.querySelectorAll('img'));
+    let crossfadeCurrent = crossfadeSlides.findIndex(img => img.classList.contains('is-active'));
+    if (crossfadeCurrent === -1) crossfadeCurrent = 0;
+    if (crossfadeSlides.length > 1){
+      setInterval(() => {
+        crossfadeSlides[crossfadeCurrent].classList.remove('is-active');
+        crossfadeCurrent = (crossfadeCurrent + 1) % crossfadeSlides.length;
+        crossfadeSlides[crossfadeCurrent].classList.add('is-active');
+      }, 3200);
+    }
   }
 
   /* ---------- Through the Years — horizontal cards, pinned ---------- */
