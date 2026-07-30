@@ -473,6 +473,69 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
   background: rgba(0,0,0,.4);
 }
 
+/* Album countdown popup */
+.album-popup-backdrop{
+  position: fixed; inset:0;
+  background: rgba(8,7,10,.85);
+  backdrop-filter: blur(6px);
+  z-index: 3000;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; visibility:hidden;
+  transition: opacity .5s ease, visibility .5s ease;
+  padding: 24px;
+}
+.album-popup-backdrop.open{ opacity:1; visibility:visible; }
+.album-popup-card{
+  background: var(--bg-alt);
+  max-width: 420px; width:100%;
+  max-height: 90vh;
+  overflow:auto;
+  position: relative;
+  border: 1px solid var(--line);
+  transform: scale(.92) translateY(20px);
+  transition: transform .5s var(--ease);
+}
+.album-popup-backdrop.open .album-popup-card{ transform: scale(1) translateY(0); }
+.album-popup-close{
+  position: absolute; top:14px; right:14px;
+  width:36px; height:36px;
+  border:1px solid var(--line); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  z-index:2;
+  background: rgba(8,7,10,.5);
+  color: var(--fg);
+}
+.album-popup-art{ width:100%; aspect-ratio: 1 / 1; overflow:hidden; }
+.album-popup-art img{ width:100%; height:100%; object-fit:cover; display:block; }
+.album-popup-body{ padding: 30px 26px 36px; text-align:center; }
+.album-popup-logo{ width: min(150px, 46%); margin: 0 auto 20px; }
+.album-popup-title{
+  font-family: var(--font-display);
+  font-size: clamp(26px, 6vw, 38px);
+  margin: 0 0 6px;
+  letter-spacing: 1px;
+}
+.album-popup-sub{
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 22px;
+}
+.album-popup-countdown{ display:flex; justify-content:center; gap:16px; }
+.cd-unit{ display:flex; flex-direction:column; align-items:center; }
+.cd-value{
+  font-family: var(--font-display);
+  font-size: clamp(24px, 5vw, 34px);
+  line-height: 1;
+  color: var(--fg);
+}
+.cd-label{
+  font-size: 10px; letter-spacing:2px; text-transform:uppercase;
+  color: var(--muted); margin-top:6px;
+}
+
 /* Music / Discography */
 .ep-block{
   display:grid;
@@ -495,6 +558,63 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 @media (max-width: 480px){
   .ep-art{ max-width: 190px; }
 }
+
+/* Upcoming album — highlighted */
+.ep-block--upcoming .ep-art{
+  box-shadow: 0 20px 70px rgba(200,32,47,.35), 0 20px 60px rgba(0,0,0,.5);
+}
+.ep-countdown-block{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap: 18px;
+}
+.ep-countdown-intro{ margin-bottom: 4px; }
+.ep-countdown-line{
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.5;
+  color: #dedad3;
+  font-weight: 300;
+  margin: 0;
+}
+.ep-countdown-label{
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 10px 0 0;
+}
+.ep-countdown{ justify-content:flex-start; gap:34px; }
+.ep-countdown .cd-value{ font-size: clamp(36px, 7vw, 58px); }
+.ep-countdown .cd-label{ font-size: 12px; letter-spacing:1.5px; margin-top:8px; }
+@media (max-width: 760px){
+  .ep-countdown-block{ align-items:center; text-align:center; }
+  .ep-countdown{ justify-content:center; gap:24px; }
+}
+
+/* Previous release — reduced prominence */
+.ep-divider{
+  height: 1px;
+  background: var(--line);
+  margin: 46px 0 32px;
+}
+.eyebrow--sub{ opacity:.7; font-size:11px; letter-spacing:3px; }
+.ep-compact-title{
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.6vw, 24px);
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin: 0 0 22px;
+}
+.ep-block--compact{
+  grid-template-columns: 190px 1fr;
+  gap: 22px;
+  max-width: 620px;
+  margin: 0 auto 46px;
+  opacity: .85;
+}
+@media (max-width: 760px){ .ep-block--compact{ grid-template-columns: 1fr; } }
 
 .video-heading{
   font-family: var(--font-display);
@@ -817,6 +937,20 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
   margin: 6px 0 18px;
 }
 .promo-thankyou p{ color:#dedad3; line-height:1.6; font-size:15px; }
+.promo-visit-btn{
+  display:inline-block;
+  margin-top: 26px;
+  padding: 16px 32px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 2px;
+  transition: background .3s, transform .3s var(--ease);
+}
+.promo-visit-btn:hover{ background: var(--accent-2); transform: translateY(-2px); }
 
 /* Footer */
 .footer{

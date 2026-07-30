@@ -35,6 +35,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- Shared album-release countdown ---------- */
+  // 6:00 AM Mauritius time (UTC+4, no DST) on 28 Aug 2026 = 02:00 UTC
+  const ALBUM_RELEASE = new Date('2026-08-28T02:00:00Z');
+  const pad2 = n => String(Math.max(n, 0)).padStart(2, '0');
+  function startCountdown(ids){
+    const els = {
+      days: document.getElementById(ids.days),
+      hours: document.getElementById(ids.hours),
+      minutes: document.getElementById(ids.minutes),
+      seconds: document.getElementById(ids.seconds)
+    };
+    if (!els.days || !els.hours || !els.minutes || !els.seconds) return;
+    function tick(){
+      const diff = ALBUM_RELEASE.getTime() - Date.now();
+      if (diff <= 0){
+        els.days.textContent = '00'; els.hours.textContent = '00';
+        els.minutes.textContent = '00'; els.seconds.textContent = '00';
+        return;
+      }
+      const totalSeconds = Math.floor(diff / 1000);
+      els.days.textContent = pad2(Math.floor(totalSeconds / 86400));
+      els.hours.textContent = pad2(Math.floor((totalSeconds % 86400) / 3600));
+      els.minutes.textContent = pad2(Math.floor((totalSeconds % 3600) / 60));
+      els.seconds.textContent = pad2(totalSeconds % 60);
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+  startCountdown({ days: 'cdDays', hours: 'cdHours', minutes: 'cdMinutes', seconds: 'cdSeconds' });
+  startCountdown({ days: 'discogDays', hours: 'discogHours', minutes: 'discogMinutes', seconds: 'discogSeconds' });
+
+  /* ---------- Album countdown popup ---------- */
+  const albumPopupBackdrop = document.getElementById('albumPopupBackdrop');
+  function closeAlbumPopup(){
+    if (!albumPopupBackdrop) return;
+    albumPopupBackdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (albumPopupBackdrop){
+    function openAlbumPopup(){
+      albumPopupBackdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    // show once per browser session, right after the intro finishes
+    if (!sessionStorage.getItem('ryoshiAlbumPopupSeen')){
+      setTimeout(() => {
+        openAlbumPopup();
+        sessionStorage.setItem('ryoshiAlbumPopupSeen', '1');
+      }, 2800);
+    }
+    document.getElementById('albumPopupClose').addEventListener('click', closeAlbumPopup);
+    albumPopupBackdrop.addEventListener('click', e => { if (e.target === albumPopupBackdrop) closeAlbumPopup(); });
+  }
+
   /* ---------- Promo form (QR / Rs 200 discount landing page) ---------- */
   const promoForm = document.getElementById('promoForm');
   if (promoForm){
@@ -345,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape'){ closeMember(); closeLightbox(); closeSecret(); }
+    if (e.key === 'Escape'){ closeMember(); closeLightbox(); closeSecret(); closeAlbumPopup(); }
   });
 
   /* ---------- Ambient particle background ---------- */
