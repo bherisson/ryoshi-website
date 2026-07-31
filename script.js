@@ -1,4 +1,4 @@
-// ===================== RYOSHI site script =====================
+// ===================== RYŌSHI site script =====================
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -244,27 +244,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const members = {
     felix: {
       name: 'Felix', role: 'Vocals', img: 'assets/felix2.jpg',
-      bio: 'Front-man and lyricist. Felix brings the raw, guttural energy that anchors Ryoshi\'s live sound, channeling emotion into every performance.',
-      gear: 'Shure SM58, in-ear monitors, custom vocal chain.',
-      fav: 'Architects, Currents, Bad Omens.'
+      bio: 'Front-man and lyricist. Felix brings the raw, guttural energy that anchors Ryōshi\'s live sound, channeling emotion into every performance.',
+      fav: 'Cause N Effect, The Zenith Passage, Humanity\'s Last Breath.'
     },
     alison: {
       name: 'Alison', role: 'Guitar', img: 'assets/alison4.jpg',
-      bio: 'Riffs, leads, and atmosphere. Alison writes the melodic backbone that gives Ryoshi its progressive edge.',
-      gear: '7-string guitar, Neural DSP Quad Cortex, EMG pickups.',
-      fav: 'Periphery, Polyphia, Sylosis.'
+      bio: 'Riffs, leads, and atmosphere. Alison writes the melodic backbone that gives Ryōshi its progressive edge.',
+      fav: 'Periphery, Veil of Maya, Spiritbox.'
     },
     bertrand: {
       name: 'Bertrand', role: 'Bass', img: 'assets/bertrand2.jpg',
       bio: 'Low-end and groove. Bertrand locks the rhythm section together and drives the heavier passages.',
-      gear: '5-string bass, Darkglass preamp, Ampeg cab.',
-      fav: 'Spiritbox, Northlane, Meshuggah.'
+      fav: 'Periphery, Chelsea Grin, KoRn.'
     },
     william: {
       name: 'William', role: 'Drums', img: 'assets/william2.jpg',
       bio: 'Precision and power behind the kit. William\'s dynamic playing shapes every breakdown and blast.',
-      gear: 'Custom hybrid kit, triggers, Zildjian cymbals.',
-      fav: 'Veil of Maya, The Contortionist, Volumes.'
+      fav: 'Meshuggah, Periphery, Limp Bizkit.'
     }
   };
 
@@ -273,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalName = document.getElementById('modalName');
   const modalRole = document.getElementById('modalRole');
   const modalBio = document.getElementById('modalBio');
-  const modalGear = document.getElementById('modalGear');
   const modalFav = document.getElementById('modalFav');
 
   function openMember(key){
@@ -283,7 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
     modalName.textContent = m.name;
     modalRole.textContent = m.role;
     modalBio.textContent = m.bio;
-    modalGear.textContent = m.gear;
     modalFav.textContent = m.fav;
     modalBackdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
