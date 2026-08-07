@@ -1016,8 +1016,9 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 .partner-mark:hover{ background-color: var(--fg); }
 
 .partner-mark--indiecrate{
-  width: 168px;
-  height: 46px;
+  width: 660px;
+  max-width: 80vw;
+  height: 92px;
   -webkit-mask-image: url('assets/indiecrate-mark.png');
   mask-image: url('assets/indiecrate-mark.png');
 }
