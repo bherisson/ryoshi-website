@@ -1016,8 +1016,7 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 .partner-mark:hover{ background-color: var(--fg); }
 
 .partner-mark--indiecrate{
-  width: 660px;
-  max-width: 80vw;
+  width: 90px;
   height: 92px;
   -webkit-mask-image: url('assets/indiecrate-mark.png');
   mask-image: url('assets/indiecrate-mark.png');
@@ -1236,6 +1235,17 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 }
 .about-hero-label{
   margin-bottom: 18px;
+}
+
+@media (max-width: 760px){
+  /* "The Portal Shifts" news article: its hero image is a wide event
+     poster (landscape), so on mobile portrait the default cover+zoom
+     crop chops off both sides. Show it uncropped instead. */
+  .reschedule-hero .hero-bg{
+    object-fit: contain;
+    object-position: center center;
+    transform: scale(1);
+  }
 }
 .hero-title-logo--big{
   width: min(520px, 78vw);
