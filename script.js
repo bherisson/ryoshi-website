@@ -78,13 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
       albumPopupBackdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-    // show once per browser session, right after the intro finishes
-    if (!sessionStorage.getItem('ryoshiAlbumPopupSeen')){
-      setTimeout(() => {
-        openAlbumPopup();
-        sessionStorage.setItem('ryoshiAlbumPopupSeen', '1');
-      }, 2800);
-    }
+    // Countdown popup temporarily disabled (album already released — a new
+    // banner is coming later). To re-enable, restore the setTimeout below.
+    // if (!sessionStorage.getItem('ryoshiAlbumPopupSeen')){
+    //   setTimeout(() => {
+    //     openAlbumPopup();
+    //     sessionStorage.setItem('ryoshiAlbumPopupSeen', '1');
+    //   }, 2800);
+    // }
     document.getElementById('albumPopupClose').addEventListener('click', closeAlbumPopup);
     albumPopupBackdrop.addEventListener('click', e => { if (e.target === albumPopupBackdrop) closeAlbumPopup(); });
   }
@@ -95,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Paste the Google Apps Script Web App URL here once deployed (ends in /exec)
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtP5jjIY07Q0BhYXjrgOxHh0aWysKtDqCx3n-5DvI32QES2rKp0eU-TU97fNLLRTNx/exec';
     const promoThankYou = document.getElementById('promoThankYou');
+    const promoIntro = document.getElementById('promoIntro');
     const promoSubmitBtn = promoForm.querySelector('.promo-submit');
 
     promoForm.addEventListener('submit', (e) => {
@@ -114,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data })
         .then(() => {
           promoForm.style.display = 'none';
+          if (promoIntro) promoIntro.style.display = 'none';
           if (promoThankYou) promoThankYou.classList.add('is-visible');
         })
         .catch(() => {

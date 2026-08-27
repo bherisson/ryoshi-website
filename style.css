@@ -598,6 +598,9 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 .ep-block--upcoming .ep-art{
   box-shadow: 0 20px 70px rgba(200,32,47,.35), 0 20px 60px rgba(0,0,0,.5);
 }
+/* Temporary: countdown removed, art shown alone until the new banner is ready */
+.ep-block--art-only{ grid-template-columns: 1fr; justify-items:center; }
+.ep-block--art-only .ep-art{ max-width: 420px; width:100%; }
 .ep-countdown-block{
   display:flex;
   flex-direction:column;
