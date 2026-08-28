@@ -78,16 +78,24 @@ document.addEventListener('DOMContentLoaded', () => {
       albumPopupBackdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-    // Countdown popup temporarily disabled (album already released — a new
-    // banner is coming later). To re-enable, restore the setTimeout below.
-    // if (!sessionStorage.getItem('ryoshiAlbumPopupSeen')){
-    //   setTimeout(() => {
-    //     openAlbumPopup();
-    //     sessionStorage.setItem('ryoshiAlbumPopupSeen', '1');
-    //   }, 2800);
-    // }
+    // show once per browser session, right after the intro finishes
+    if (!sessionStorage.getItem('ryoshiAlbumPopupSeen')){
+      setTimeout(() => {
+        openAlbumPopup();
+        sessionStorage.setItem('ryoshiAlbumPopupSeen', '1');
+      }, 2800);
+    }
     document.getElementById('albumPopupClose').addEventListener('click', closeAlbumPopup);
     albumPopupBackdrop.addEventListener('click', e => { if (e.target === albumPopupBackdrop) closeAlbumPopup(); });
+
+    const albumPopupBuyBtn = document.getElementById('albumPopupBuyBtn');
+    if (albumPopupBuyBtn){
+      albumPopupBuyBtn.addEventListener('click', () => {
+        closeAlbumPopup();
+        const mainBuyBtn = document.getElementById('buyAlbumBtn');
+        if (mainBuyBtn) mainBuyBtn.click();
+      });
+    }
   }
 
   /* ---------- Promo form (QR / Rs 200 discount landing page) ---------- */
