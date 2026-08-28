@@ -572,6 +572,7 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
   opacity: .85;
 }
 @media (max-width: 760px){ .ep-block--compact{ grid-template-columns: 1fr; } }
+.ep-block--embed-only{ grid-template-columns: 1fr; max-width: 480px; }
 
 .video-heading{
   font-family: var(--font-display);
