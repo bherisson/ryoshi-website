@@ -605,6 +605,7 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 
 /* Buy digital album */
 .buy-album-btn{
+  display: inline-block;
   margin-top: 26px;
   padding: 15px 34px;
   background: var(--accent);
@@ -618,7 +619,46 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
   cursor: pointer;
   transition: opacity .25s ease, transform .25s ease;
 }
-.buy-album-btn:hover{ opacity:.85; transform: translateY(-2px); }
+.buy-album-btn:hover{ opacity:.85; transform: translateY(-2px); color:#fff; }
+
+/* Album detail page (no big hero banner) */
+.album-page{ padding-top: 160px; }
+.album-page-grid{
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 60px;
+  align-items: center;
+}
+@media (max-width: 760px){
+  .album-page{ padding-top: 130px; }
+  .album-page-grid{ grid-template-columns: 1fr; gap: 34px; text-align:center; }
+}
+.album-page-art img{
+  display:block;
+  width:100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 70px rgba(200,32,47,.35), 0 20px 60px rgba(0,0,0,.5);
+}
+.album-page-text h1{
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 52px);
+  letter-spacing: 1px;
+  margin: 0 0 24px;
+}
+.album-page-text p{
+  font-size: 15px;
+  line-height: 1.75;
+  color: #dedad3;
+  font-weight: 300;
+  margin: 0 0 16px;
+}
+.album-page-text .album-page-closing{
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.4vw, 23px);
+  letter-spacing: 1px;
+  margin: 24px 0 30px;
+}
 
 .buy-modal{ grid-template-columns: 1fr; max-width: 560px; }
 .buy-modal-body{ padding: 40px 34px; }

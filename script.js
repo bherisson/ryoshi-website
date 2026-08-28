@@ -87,15 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.getElementById('albumPopupClose').addEventListener('click', closeAlbumPopup);
     albumPopupBackdrop.addEventListener('click', e => { if (e.target === albumPopupBackdrop) closeAlbumPopup(); });
-
-    const albumPopupBuyBtn = document.getElementById('albumPopupBuyBtn');
-    if (albumPopupBuyBtn){
-      albumPopupBuyBtn.addEventListener('click', () => {
-        closeAlbumPopup();
-        const mainBuyBtn = document.getElementById('buyAlbumBtn');
-        if (mainBuyBtn) mainBuyBtn.click();
-      });
-    }
   }
 
   /* ---------- Promo form (QR / Rs 200 discount landing page) ---------- */

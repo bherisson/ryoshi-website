@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Forth Kind — RYŌSHI</title>
+<meta name="description" content="The Forth Kind — Ryōshi's new digital album. 8 tracks. Out now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Intro overlay -->
+<div id="intro" class="intro">
+  <img src="assets/logo.jpeg" alt="Ryōshi logo" class="intro-logo" id="introLogo">
+</div>
+
+<!-- Ambient particles -->
+<canvas id="particles"></canvas>
+
+<!-- Buy album modal -->
+<div class="modal-backdrop buy-modal-backdrop" id="buyModalBackdrop">
+  <div class="modal buy-modal">
+    <button class="modal-close" id="buyModalClose" aria-label="Close" data-cursor="link">✕</button>
+    <div class="modal-body buy-modal-body">
+      <span class="eyebrow reveal-line">— Digital Album —</span>
+      <h3>Get The Forth Kind</h3>
+      <p class="buy-price">Rs 800</p>
+
+      <div class="modal-block">
+        <h4>Step 1 — Pay via Juice or Bank Transfer</h4>
+        <div class="buy-account-box">
+          <div class="buy-account-row">
+            <span class="buy-account-label">Bank</span>
+            <span class="buy-account-value">Mauritius Commercial Bank</span>
+          </div>
+          <div class="buy-account-row">
+            <span class="buy-account-label">Account Name</span>
+            <span class="buy-account-value">Ryōshi</span>
+          </div>
+          <div class="buy-account-row">
+            <span class="buy-account-label">Account Number</span>
+            <span class="buy-account-value buy-account-number" id="buyAccountNumber">0004 5323 7932</span>
+          </div>
+          <button type="button" class="buy-copy-btn" id="buyCopyBtn" data-cursor="link">Copy Account Number</button>
+        </div>
+      </div>
+
+      <div class="modal-block">
+        <h4>Step 2 — Send Proof of Payment</h4>
+        <p>Email a screenshot or receipt of your payment to <a href="mailto:ryoshiofficial@gmail.com" data-cursor="link">ryoshiofficial@gmail.com</a>, along with the email address where you'd like the album sent.</p>
+      </div>
+
+      <div class="modal-block">
+        <h4>Step 3 — Receive The Album</h4>
+        <p>Once your payment is confirmed, we'll email you the full album as a download link. *Processing time may vary.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="assets/logo-main-trim.png" alt="Ryōshi" class="nav-logo" id="navLogo">
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" data-cursor="link">Home</a>
+    <a href="about.html" data-cursor="link">About</a>
+    <a href="index.html#band" data-cursor="link">Band</a>
+    <a href="index.html#music" data-cursor="link">Music</a>
+    <a href="news.html" data-cursor="link">News</a>
+    <a href="index.html#gallery" data-cursor="link">Gallery</a>
+    <a href="index.html#contact" data-cursor="link">Contact</a>
+  </div>
+</nav>
+
+<!-- ALBUM DETAIL -->
+<section class="section album-page">
+  <div class="section-inner">
+    <div class="album-page-grid">
+      <div class="album-page-art reveal-scale">
+        <img src="assets/promo-background2.png" alt="The Forth Kind — Ryōshi album artwork">
+      </div>
+      <div class="album-page-text">
+        <span class="eyebrow reveal-line">— Discography —</span>
+        <h1 class="reveal-line">THE FORTH KIND</h1>
+        <p class="reveal-line">Ryōshi's new album is here.</p>
+        <p class="reveal-line">8 tracks exploring a new musical direction, bringing together different styles, influences and atmospheres.</p>
+        <p class="reveal-line">Following the first single No Virtue, discover the full journey that is The Forth Kind.</p>
+        <p class="reveal-line">Digital album, 8 tracks.</p>
+        <p class="album-page-closing reveal-line">The next chapter starts here.</p>
+        <button type="button" class="buy-album-btn" id="buyAlbumBtn" data-cursor="link">Get Album at Rs 800</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="assets/logo-main-trim.png" alt="Ryōshi" class="footer-logo">
+  <div class="footer-socials">
+    <a href="https://open.spotify.com/artist/4Uqqi1n97pdr0EM11cyq5P" data-social="spotify" target="_blank" rel="noopener" data-cursor="link">Spotify</a>
+    <a href="https://www.youtube.com/@Ryoshi.official" data-social="youtube" target="_blank" rel="noopener" data-cursor="link">YouTube</a>
+    <a href="https://www.instagram.com/ryoshi.official/" data-social="instagram" target="_blank" rel="noopener" data-cursor="link">Instagram</a>
+    <a href="https://www.facebook.com/ryoshi.band" data-social="facebook" target="_blank" rel="noopener" data-cursor="link">Facebook</a>
+    <a href="https://www.tiktok.com/@ryoshi.band" data-social="tiktok" target="_blank" rel="noopener" data-cursor="link">TikTok</a>
+  </div>
+  <p class="footer-copy">© 2026 Ryōshi. All rights reserved. Mauritius.</p>
+</footer>
+
+<!-- SECRET WALLPAPER PAGE -->
+<div class="secret-page" id="secretPage">
+  <button class="secret-close" id="secretClose" data-cursor="link">✕ Close</button>
+  <h2>SECRET STASH</h2>
+  <p>You found it. Wallpapers, for the faithful.</p>
+  <div class="secret-grid">
+    <a href="assets/background3.jpg" download class="secret-item" data-cursor="link"><img src="assets/background3.jpg" alt="Wallpaper 1"><span>Download</span></a>
+    <a href="assets/about/the-hunt-launch.jpg" download class="secret-item" data-cursor="link"><img src="assets/about/the-hunt-launch.jpg" alt="Wallpaper 2"><span>Download</span></a>
+    <a href="assets/about/portal-final.png" download class="secret-item" data-cursor="link"><img src="assets/about/portal-final.png" alt="Wallpaper 3"><span>Download</span></a>
+  </div>
+</div>
+
+<div class="easter-toast" id="easterToast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
