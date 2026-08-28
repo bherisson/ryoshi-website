@@ -299,6 +299,44 @@ document.addEventListener('DOMContentLoaded', () => {
     modalBackdrop.addEventListener('click', e => { if (e.target === modalBackdrop) closeMember(); });
   }
 
+  /* ---------- Buy album modal ---------- */
+  const buyModalBackdrop = document.getElementById('buyModalBackdrop');
+  const buyAlbumBtn = document.getElementById('buyAlbumBtn');
+  if (buyModalBackdrop && buyAlbumBtn){
+    function openBuyModal(){
+      buyModalBackdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeBuyModal(){
+      buyModalBackdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    buyAlbumBtn.addEventListener('click', openBuyModal);
+    document.getElementById('buyModalClose').addEventListener('click', closeBuyModal);
+    buyModalBackdrop.addEventListener('click', e => { if (e.target === buyModalBackdrop) closeBuyModal(); });
+
+    const buyCopyBtn = document.getElementById('buyCopyBtn');
+    const buyAccountNumber = document.getElementById('buyAccountNumber');
+    if (buyCopyBtn && buyAccountNumber){
+      buyCopyBtn.addEventListener('click', () => {
+        const value = buyAccountNumber.textContent.trim();
+        const done = () => {
+          buyCopyBtn.textContent = 'Copied!';
+          buyCopyBtn.classList.add('copied');
+          setTimeout(() => {
+            buyCopyBtn.textContent = 'Copy Account Number';
+            buyCopyBtn.classList.remove('copied');
+          }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(value).then(done).catch(done);
+        } else {
+          done();
+        }
+      });
+    }
+  }
+
   /* ---------- Gallery lightbox ---------- */
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
