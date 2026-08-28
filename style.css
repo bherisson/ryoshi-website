@@ -508,70 +508,6 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
   background: rgba(0,0,0,.4);
 }
 
-/* Album countdown popup */
-.album-popup-backdrop{
-  position: fixed; inset:0;
-  background: rgba(8,7,10,.85);
-  backdrop-filter: blur(6px);
-  z-index: 3000;
-  display:flex; align-items:center; justify-content:center;
-  opacity:0; visibility:hidden;
-  transition: opacity .5s ease, visibility .5s ease;
-  padding: 24px;
-}
-.album-popup-backdrop.open{ opacity:1; visibility:visible; }
-.album-popup-card{
-  background: var(--bg-alt);
-  max-width: 420px; width:100%;
-  max-height: 90vh;
-  overflow:auto;
-  position: relative;
-  border: 1px solid var(--line);
-  transform: scale(.92) translateY(20px);
-  transition: transform .5s var(--ease);
-}
-.album-popup-backdrop.open .album-popup-card{ transform: scale(1) translateY(0); }
-.album-popup-close{
-  position: absolute; top:14px; right:14px;
-  width:36px; height:36px;
-  border:1px solid var(--line); border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  z-index:2;
-  background: rgba(8,7,10,.5);
-  color: var(--fg);
-}
-.album-popup-art{ width:100%; aspect-ratio: 1 / 1; overflow:hidden; }
-.album-popup-art img{ width:100%; height:100%; object-fit:cover; display:block; }
-.album-popup-body{ padding: 30px 26px 36px; text-align:center; }
-.album-popup-logo{ width: min(150px, 46%); margin: 0 auto 20px; }
-.album-popup-title{
-  font-family: var(--font-display);
-  font-size: clamp(26px, 6vw, 38px);
-  margin: 0 0 22px;
-  letter-spacing: 1px;
-}
-.album-popup-cta{ margin-top: 0; }
-.album-popup-sub{
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  font-weight: 600;
-  margin: 0 0 22px;
-}
-.album-popup-countdown{ display:flex; justify-content:center; gap:16px; }
-.cd-unit{ display:flex; flex-direction:column; align-items:center; }
-.cd-value{
-  font-family: var(--font-display);
-  font-size: clamp(24px, 5vw, 34px);
-  line-height: 1;
-  color: var(--fg);
-}
-.cd-label{
-  font-size: 10px; letter-spacing:2px; text-transform:uppercase;
-  color: var(--muted); margin-top:6px;
-}
-
 /* Music / Discography */
 .ep-block{
   display:grid;
@@ -599,149 +535,19 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 .ep-block--upcoming .ep-art{
   box-shadow: 0 20px 70px rgba(200,32,47,.35), 0 20px 60px rgba(0,0,0,.5);
 }
-/* Temporary: countdown removed, art shown alone until the new banner is ready */
-.ep-block--art-only{ grid-template-columns: 1fr; justify-items:center; }
-.ep-block--art-only .ep-art{ max-width: 420px; width:100%; }
-
-/* Buy digital album */
-.buy-album-btn{
-  display: inline-block;
-  margin-top: 26px;
-  padding: 15px 34px;
+.ep-art--new{ position: relative; }
+.ep-new-badge{
+  position: absolute;
+  top: 14px; left: 14px;
+  z-index: 2;
   background: var(--accent);
   color: #fff;
-  border: none;
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: opacity .25s ease, transform .25s ease;
-}
-.buy-album-btn:hover{ opacity:.85; transform: translateY(-2px); color:#fff; }
-
-/* Album detail page (no big hero banner) */
-.album-page{ padding-top: 160px; }
-.album-page-grid{
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 60px;
-  align-items: center;
-}
-@media (max-width: 760px){
-  .album-page{ padding-top: 130px; }
-  .album-page-grid{ grid-template-columns: 1fr; gap: 34px; text-align:center; }
-}
-.album-page-art img{
-  display:block;
-  width:100%;
-  border-radius: 12px;
-  box-shadow: 0 20px 70px rgba(200,32,47,.35), 0 20px 60px rgba(0,0,0,.5);
-}
-.album-page-text h1{
-  font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 52px);
-  letter-spacing: 1px;
-  margin: 0 0 24px;
-}
-.album-page-text p{
-  font-size: 15px;
-  line-height: 1.75;
-  color: #dedad3;
-  font-weight: 300;
-  margin: 0 0 16px;
-}
-.album-page-text .album-page-closing{
-  color: var(--accent);
-  font-family: var(--font-display);
-  font-size: clamp(18px, 2.4vw, 23px);
-  letter-spacing: 1px;
-  margin: 24px 0 30px;
-}
-
-.buy-modal{ grid-template-columns: 1fr; max-width: 560px; }
-.buy-modal-body{ padding: 40px 34px; }
-.buy-modal-body h3{
-  font-family: var(--font-display);
-  font-size: 30px;
-  letter-spacing: 1px;
-  margin: 6px 0 2px;
-}
-.buy-price{
-  color: var(--accent);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin: 0 0 26px;
-}
-.buy-account-box{
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.03);
-  padding: 18px 20px;
-  margin-top: 8px;
-}
-.buy-account-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 13px;
-}
-.buy-account-row:last-of-type{ border-bottom:none; }
-.buy-account-label{
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
   font-size: 11px;
-}
-.buy-account-value{ color: var(--fg); font-weight: 500; text-align:right; }
-.buy-account-number{ font-family: 'Courier New', monospace; letter-spacing: 1px; }
-.buy-copy-btn{
-  margin-top: 14px;
-  width: 100%;
-  padding: 10px;
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--fg);
-  font-size: 11px;
+  font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: border-color .25s ease, color .25s ease;
-}
-.buy-copy-btn:hover{ border-color: var(--accent); color: var(--accent); }
-.buy-copy-btn.copied{ border-color:#8fbf3f; color:#8fbf3f; }
-.ep-countdown-block{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap: 18px;
-}
-.ep-countdown-intro{ margin-bottom: 4px; }
-.ep-countdown-line{
-  font-size: clamp(16px, 2vw, 19px);
-  line-height: 1.5;
-  color: #dedad3;
-  font-weight: 300;
-  margin: 0;
-}
-.ep-countdown-label{
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 13px;
-  font-weight: 600;
-  margin: 10px 0 0;
-}
-.ep-countdown{ justify-content:flex-start; gap:34px; }
-.ep-countdown .cd-value{ font-size: clamp(36px, 7vw, 58px); }
-.ep-countdown .cd-label{ font-size: 12px; letter-spacing:1.5px; margin-top:8px; }
-@media (max-width: 760px){
-  .ep-countdown-block{ align-items:center; text-align:center; }
-  .ep-countdown{ justify-content:center; gap:24px; }
+  padding: 6px 12px;
 }
 
 /* Previous release — reduced prominence */

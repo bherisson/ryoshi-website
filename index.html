@@ -23,21 +23,6 @@
 <!-- Ambient particles -->
 <canvas id="particles"></canvas>
 
-<!-- Album countdown popup -->
-<div class="album-popup-backdrop" id="albumPopupBackdrop">
-  <div class="album-popup-card">
-    <button class="album-popup-close" id="albumPopupClose" aria-label="Close" data-cursor="link">✕</button>
-    <div class="album-popup-art">
-      <img src="assets/promo-background2.png" alt="The Forth Kind album art">
-    </div>
-    <div class="album-popup-body">
-      <img src="assets/logo-ryoshi-trim.png" alt="Ryōshi" class="album-popup-logo">
-      <h3 class="album-popup-title">'THE FORTH KIND' IS OUT</h3>
-      <a href="album.html" class="buy-album-btn album-popup-cta" data-cursor="link">Get The Forth Kind</a>
-    </div>
-  </div>
-</div>
-
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#hero" class="nav-logo-wrap">
@@ -105,11 +90,14 @@
     <span class="eyebrow reveal-line">— Discography —</span>
     <h2 class="section-title reveal-line">THE FORTH KIND</h2>
 
-    <div class="ep-block ep-block--upcoming ep-block--art-only reveal-scale">
-      <div class="ep-art">
+    <div class="ep-block ep-block--upcoming reveal-scale">
+      <div class="ep-art ep-art--new">
+        <span class="ep-new-badge">New Release</span>
         <img src="assets/promo-background2.png" alt="The Forth Kind — Ryōshi album artwork" loading="lazy">
       </div>
-      <a href="album.html" class="buy-album-btn" data-cursor="link">Get The Forth Kind</a>
+      <div class="ep-embed">
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/20WZhkSWJiaKVvlqvzjDkC?utm_source=generator&si=0305b5f4abea4864" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
     </div>
 
     <div class="ep-divider"></div>
