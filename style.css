@@ -765,9 +765,9 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 .gallery-crossfade{
   display: block;
   position: relative;
-  max-width: 900px;
+  max-width: 560px;
   margin: 0 auto;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1 / 1;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,.5);
@@ -799,17 +799,30 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 .gallery-crossfade-cta span{ transition: transform .3s var(--ease); }
 .gallery-crossfade:hover .gallery-crossfade-cta span{ transform: translateX(6px); }
 
-/* Full gallery page grid */
+/* Full gallery page grid — masonry columns, images shown full/uncropped */
 .gallery-page-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 18px;
+  column-count: 3;
+  column-gap: 18px;
+}
+@media (max-width: 900px){
+  .gallery-page-grid{ column-count: 2; }
+}
+@media (max-width: 560px){
+  .gallery-page-grid{ column-count: 1; }
 }
 .gallery-page-grid .slider-item{
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: auto;
   border-radius: 10px;
   cursor: none;
+  break-inside: avoid;
+  margin-bottom: 18px;
+}
+.gallery-page-grid .slider-item img{
+  width: 100%;
+  height: auto;
+  object-fit: unset;
+  display: block;
 }
 
 .slider{
@@ -1400,4 +1413,48 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 .news-emphasis--final{
   font-size: clamp(26px, 4vw, 42px) !important;
   color: var(--fg) !important;
+}
+.news-body-img{
+  border-radius: 10px;
+  overflow: hidden;
+}
+.news-body-img img{
+  width: 100%;
+  display: block;
+}
+.news-body-img-row{
+  display: flex;
+  gap: 14px;
+}
+.news-body-img-row .news-body-img{ flex: 1; }
+@media (max-width: 600px){
+  .news-body-img-row{ flex-direction: column; }
+}
+.news-event-details{
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 30px;
+  text-align: center;
+}
+.news-event-details h3{
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing: 1px;
+  color: var(--fg);
+  margin: 0 0 18px;
+}
+.news-event-details p{
+  font-size: 15px;
+  color: #dedad3;
+  font-weight: 300;
+  margin: 8px 0;
+}
+.news-event-details p span{
+  display: inline-block;
+  min-width: 78px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-right: 10px;
 }
