@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Forth Kind — RYŌSHI</title>
-<meta name="description" content="The Forth Kind — Ryōshi's new digital album. 8 tracks. Out now.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<title>Get The Forth Kind — RYŌSHI</title>
+<meta name="description" content="Get Ryōshi's album The Forth Kind directly — pay by Juice or bank transfer and receive your download link by email.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -23,47 +24,6 @@
 <!-- Ambient particles -->
 <canvas id="particles"></canvas>
 
-<!-- Buy album modal -->
-<div class="modal-backdrop buy-modal-backdrop" id="buyModalBackdrop">
-  <div class="modal buy-modal">
-    <button class="modal-close" id="buyModalClose" aria-label="Close" data-cursor="link">✕</button>
-    <div class="modal-body buy-modal-body">
-      <span class="eyebrow reveal-line">— Digital Album —</span>
-      <h3>Get The Forth Kind</h3>
-      <p class="buy-price">Rs 800</p>
-
-      <div class="modal-block">
-        <h4>Step 1 — Pay via Juice or Bank Transfer</h4>
-        <div class="buy-account-box">
-          <div class="buy-account-row">
-            <span class="buy-account-label">Bank</span>
-            <span class="buy-account-value">Mauritius Commercial Bank</span>
-          </div>
-          <div class="buy-account-row">
-            <span class="buy-account-label">Account Name</span>
-            <span class="buy-account-value">Ryōshi</span>
-          </div>
-          <div class="buy-account-row">
-            <span class="buy-account-label">Account Number</span>
-            <span class="buy-account-value buy-account-number" id="buyAccountNumber">0004 5323 7932</span>
-          </div>
-          <button type="button" class="buy-copy-btn" id="buyCopyBtn" data-cursor="link">Copy Account Number</button>
-        </div>
-      </div>
-
-      <div class="modal-block">
-        <h4>Step 2 — Send Proof of Payment</h4>
-        <p>Email a screenshot or receipt of your payment to <a href="mailto:ryoshiofficial@gmail.com" data-cursor="link">ryoshiofficial@gmail.com</a>, along with the email address where you'd like the album sent.</p>
-      </div>
-
-      <div class="modal-block">
-        <h4>Step 3 — Receive The Album</h4>
-        <p>Once your payment is confirmed, we'll email you the full album as a download link. *Processing time may vary.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo-wrap">
@@ -71,34 +31,169 @@
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   <div class="nav-links" id="navLinks">
-    <a href="index.html" data-cursor="link">Home</a>
     <a href="about.html" data-cursor="link">About</a>
     <a href="index.html#band" data-cursor="link">Band</a>
     <a href="index.html#music" data-cursor="link">Music</a>
     <a href="news.html" data-cursor="link">News</a>
     <a href="index.html#gallery" data-cursor="link">Gallery</a>
+    <a href="index.html#shows" data-cursor="link">Shows</a>
     <a href="index.html#contact" data-cursor="link">Contact</a>
   </div>
 </nav>
 
-<!-- ALBUM DETAIL -->
-<section class="section album-page">
-  <div class="section-inner">
-    <div class="album-page-grid">
-      <div class="album-page-art reveal-scale">
-        <img src="assets/promo-background2.png" alt="The Forth Kind — Ryōshi album artwork">
-      </div>
-      <div class="album-page-text">
-        <span class="eyebrow reveal-line">— Discography —</span>
-        <h1 class="reveal-line">THE FORTH KIND</h1>
-        <p class="reveal-line">Ryōshi's new album is here.</p>
-        <p class="reveal-line">8 tracks exploring a new musical direction, bringing together different styles, influences and atmospheres.</p>
-        <p class="reveal-line">Following the first single No Virtue, discover the full journey that is The Forth Kind.</p>
-        <p class="reveal-line">Digital album, 8 tracks.</p>
-        <p class="album-page-closing reveal-line">The next chapter starts here.</p>
-        <button type="button" class="buy-album-btn" id="buyAlbumBtn" data-cursor="link">Get Album at Rs 800</button>
+<!-- ALBUM BUY FLOW -->
+<section class="section album-buy" id="albumBuySection">
+  <div class="section-inner album-buy-inner">
+
+    <!-- LANDING VIEW -->
+    <div class="album-view is-active" id="albumLandingView">
+      <div class="album-buy-grid reveal-scale">
+        <div class="album-buy-art">
+          <img src="assets/promo-background2.png" alt="The Forth Kind — Ryōshi album artwork" loading="lazy">
+        </div>
+        <div class="album-buy-info">
+          <span class="eyebrow reveal-line">— Get The Album —</span>
+          <h1 class="section-title reveal-line" style="text-align:left">THE FORTH<br>KIND</h1>
+          <p class="reveal-line" style="transition-delay:.1s">Not everyone has access to streaming platforms — so if you'd like to own The Forth Kind directly, here's how to get it straight from us, digitally.</p>
+          <div class="album-pay-choices reveal-line" style="transition-delay:.15s">
+            <button type="button" class="album-pay-btn" id="chooseJuiceBtn" data-cursor="link">
+              <span class="album-pay-btn-icon album-pay-btn-icon--juice" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+              </span>
+              Pay with MCB Juice
+            </button>
+            <button type="button" class="album-pay-btn" id="choosePaypalBtn" data-cursor="link">
+              <span class="album-pay-btn-icon album-pay-btn-icon--paypal" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2"/><path d="M2.5 10.5h19"/><path d="M6 15h4"/></svg>
+              </span>
+              Pay with PayPal
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- MCB JUICE VIEW -->
+    <div class="album-view" id="albumJuiceView">
+      <button type="button" class="album-back-btn" data-back-view data-cursor="link">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        Back
+      </button>
+
+      <div class="ep-divider"></div>
+
+      <span class="eyebrow reveal-line">— Pay With MCB Juice —</span>
+      <h2 class="section-title reveal-line" style="margin-bottom:36px">3 SIMPLE<br>STEPS</h2>
+
+      <ol class="buy-steps">
+        <li class="buy-step reveal-line">
+          <span class="buy-step-num">1</span>
+          <div class="buy-step-body">
+            <h3>Transfer via Juice or Bank</h3>
+            <p>Send the amount via Juice or bank transfer using the account details below.</p>
+          </div>
+        </li>
+        <li class="buy-step reveal-line" style="transition-delay:.05s">
+          <span class="buy-step-num">2</span>
+          <div class="buy-step-body">
+            <h3>Send Proof of Payment</h3>
+            <p>Email a screenshot of your transfer to <a href="mailto:ryoshiofficial@gmail.com" data-cursor="link">ryoshiofficial@gmail.com</a>, or send it on WhatsApp <a href="https://wa.me/23057031439" target="_blank" rel="noopener" class="whatsapp-icon-link" data-cursor="link" aria-label="Send proof of payment on WhatsApp"><svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M16.001 3C9.373 3 4 8.373 4 15.001c0 2.386.633 4.622 1.735 6.554L4 29l7.62-1.688A11.94 11.94 0 0 0 16.001 27C22.629 27 28 21.629 28 15.001 28 8.373 22.629 3 16.001 3zm0 21.818a9.77 9.77 0 0 1-4.984-1.364l-.358-.213-4.522 1.002.968-4.41-.234-.372A9.8 9.8 0 0 1 6.182 15c0-5.42 4.4-9.818 9.819-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818zm5.36-7.354c-.294-.147-1.74-.858-2.01-.955-.27-.098-.467-.147-.664.147-.196.294-.76.955-.932 1.152-.171.196-.343.22-.637.073-.294-.147-1.24-.457-2.362-1.457-.873-.778-1.463-1.74-1.634-2.033-.171-.294-.018-.453.129-.6.132-.132.294-.343.441-.514.147-.171.196-.294.294-.49.098-.196.049-.368-.024-.514-.073-.147-.664-1.6-.91-2.192-.24-.577-.484-.5-.664-.51l-.566-.01c-.196 0-.514.073-.784.368-.27.294-1.03 1.007-1.03 2.455s1.055 2.846 1.202 3.043c.147.196 2.077 3.17 5.033 4.445.703.303 1.252.484 1.68.62.706.224 1.348.192 1.856.117.566-.085 1.74-.712 1.985-1.4.245-.688.245-1.278.171-1.4-.073-.123-.27-.196-.564-.343z"/></svg></a>.</p>
+          </div>
+        </li>
+        <li class="buy-step reveal-line" style="transition-delay:.1s">
+          <span class="buy-step-num">3</span>
+          <div class="buy-step-body">
+            <h3>Register &amp; Receive</h3>
+            <p>Fill in the form below with your email and mobile number. Once we've confirmed your payment, we'll personally email you the download link.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="news-event-details reveal-scale" style="max-width:460px;margin:44px auto 0">
+        <h3>Payment Details</h3>
+        <p><span>Amount</span>Rs 500</p>
+        <p><span>Bank</span>Mauritius Commercial Bank</p>
+        <p><span>Name</span>Ryōshi</p>
+        <p id="albumAccountRow"><span>Account No.</span><span id="albumAccountNumber" class="news-event-value">0004 5323 7932</span><button type="button" id="albumCopyBtn" class="buy-copy-btn" data-cursor="link">Copy</button></p>
+      </div>
+    </div>
+
+    <!-- PAYPAL VIEW -->
+    <div class="album-view" id="albumPaypalView">
+      <button type="button" class="album-back-btn" data-back-view data-cursor="link">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        Back
+      </button>
+
+      <div class="ep-divider"></div>
+
+      <span class="eyebrow reveal-line">— Pay With PayPal —</span>
+      <h2 class="section-title reveal-line" style="margin-bottom:36px">3 SIMPLE<br>STEPS</h2>
+
+      <ol class="buy-steps">
+        <li class="buy-step reveal-line">
+          <span class="buy-step-num">1</span>
+          <div class="buy-step-body">
+            <h3>Pay Securely via PayPal</h3>
+            <p>Click the PayPal button below to pay by card or PayPal balance (USD).</p>
+          </div>
+        </li>
+        <li class="buy-step reveal-line" style="transition-delay:.05s">
+          <span class="buy-step-num">2</span>
+          <div class="buy-step-body">
+            <h3>Keep Your Confirmation</h3>
+            <p>Your PayPal confirmation email is your proof of payment — no need to send anything extra.</p>
+          </div>
+        </li>
+        <li class="buy-step reveal-line" style="transition-delay:.1s">
+          <span class="buy-step-num">3</span>
+          <div class="buy-step-body">
+            <h3>Register &amp; Receive</h3>
+            <p>Fill in the form below with the same email you used at checkout. Once confirmed, we'll personally email you the download link.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="album-paypal-wrap reveal-scale" style="margin-top:40px">
+        <div id="paypal-container-2YG2AU9TYDK3U"></div>
+      </div>
+    </div>
+
+    <!-- SHARED REGISTRATION FORM -->
+    <div class="album-view" id="albumFormWrap">
+      <div class="ep-divider"></div>
+
+      <div class="promo-intro" id="albumFormIntro">
+        <span class="eyebrow reveal-line">— Last Step —</span>
+        <h2 class="section-title reveal-line">REGISTER<br>YOUR DETAILS</h2>
+        <p class="promo-lead reveal-line" style="transition-delay:.1s">Already sent your proof of payment? Fill this in so we can send your download link to the right place.</p>
+      </div>
+
+      <form id="albumOrderForm" class="promo-form reveal-line" style="transition-delay:.2s">
+        <div class="promo-field">
+          <label for="albumName">Full Name</label>
+          <input type="text" id="albumName" name="name" required autocomplete="name">
+        </div>
+        <div class="promo-field">
+          <label for="albumMobile">Mobile Number</label>
+          <input type="tel" id="albumMobile" name="mobile" required autocomplete="tel" placeholder="e.g. 5xxx xxxx">
+        </div>
+        <div class="promo-field">
+          <label for="albumEmail">Email Address</label>
+          <input type="email" id="albumEmail" name="email" required autocomplete="email">
+        </div>
+        <button type="submit" class="promo-submit" data-cursor="link">Register My Order</button>
+        <p class="promo-note">We'll only use these details to send you your album once your payment is confirmed. We won't share them with anyone else.</p>
+      </form>
+
+      <div class="promo-thankyou" id="albumThankYou">
+        <span class="eyebrow">— Almost There —</span>
+        <h2 class="promo-thankyou-title">Thank You!</h2>
+        <p>We've received your details. Once your proof of payment is confirmed, we'll personally email you the download link for The Forth Kind. Thanks so much for supporting Ryōshi!</p>
+        <a href="index.html" class="promo-visit-btn" data-cursor="link">Visit Website</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -130,5 +225,8 @@
 <div class="easter-toast" id="easterToast"></div>
 
 <script src="script.js"></script>
+
+<!-- PayPal (international payment option — rendered lazily once the PayPal view is opened, see script.js) -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAALUHPbBcd4RNwPfvMq3OAJG1SILtqE9sa82sEeBInAorQRRvcVWSwBiy6RvH_MPA5kOUvWocyvVlzmfY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
 </body>
 </html>

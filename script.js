@@ -72,6 +72,104 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- Album order form (Get The Forth Kind) ---------- */
+  const albumOrderForm = document.getElementById('albumOrderForm');
+  if (albumOrderForm){
+    // Same Apps Script Web App as the promo form — it now also handles album orders (formType=album)
+    const APPS_SCRIPT_URL_ALBUM = 'https://script.google.com/macros/s/AKfycbxtP5jjIY07Q0BhYXjrgOxHh0aWysKtDqCx3n-5DvI32QES2rKp0eU-TU97fNLLRTNx/exec';
+    const albumThankYou = document.getElementById('albumThankYou');
+    const albumFormIntro = document.getElementById('albumFormIntro');
+    const albumSubmitBtn = albumOrderForm.querySelector('.promo-submit');
+
+    albumOrderForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!APPS_SCRIPT_URL_ALBUM || APPS_SCRIPT_URL_ALBUM.indexOf('PASTE_YOUR') === 0){
+        alert('Form backend is not connected yet.');
+        return;
+      }
+      albumSubmitBtn.disabled = true;
+      albumSubmitBtn.textContent = 'Submitting…';
+
+      const data = new URLSearchParams();
+      data.append('formType', 'album');
+      data.append('name', albumOrderForm.name.value.trim());
+      data.append('mobile', albumOrderForm.mobile.value.trim());
+      data.append('email', albumOrderForm.email.value.trim());
+
+      fetch(APPS_SCRIPT_URL_ALBUM, { method: 'POST', mode: 'no-cors', body: data })
+        .then(() => {
+          albumOrderForm.style.display = 'none';
+          if (albumFormIntro) albumFormIntro.style.display = 'none';
+          if (albumThankYou) albumThankYou.classList.add('is-visible');
+        })
+        .catch(() => {
+          albumSubmitBtn.disabled = false;
+          albumSubmitBtn.textContent = 'Register My Order';
+          alert('Something went wrong — please check your connection and try again.');
+        });
+    });
+  }
+
+  /* ---------- Album buy page — copy account number ---------- */
+  const albumCopyBtn = document.getElementById('albumCopyBtn');
+  if (albumCopyBtn){
+    const albumAccountNumber = document.getElementById('albumAccountNumber');
+    albumCopyBtn.addEventListener('click', () => {
+      const text = albumAccountNumber ? albumAccountNumber.textContent.trim() : '';
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        const original = albumCopyBtn.textContent;
+        albumCopyBtn.textContent = 'Copied!';
+        setTimeout(() => { albumCopyBtn.textContent = original; }, 1800);
+      }).catch(() => {
+        alert('Could not copy automatically — please copy manually: ' + text);
+      });
+    });
+  }
+
+  /* ---------- Album buy page — payment method switch ---------- */
+  const albumLandingView = document.getElementById('albumLandingView');
+  const albumJuiceView = document.getElementById('albumJuiceView');
+  const albumPaypalView = document.getElementById('albumPaypalView');
+  const albumFormWrap = document.getElementById('albumFormWrap');
+  const albumBuySection = document.getElementById('albumBuySection');
+
+  if (albumLandingView && albumJuiceView && albumPaypalView && albumFormWrap){
+    const revealNow = (root) => {
+      root.querySelectorAll('.reveal-line, .reveal-lines, .reveal-scale').forEach(el => el.classList.add('in'));
+    };
+    let paypalRendered = false;
+    const showAlbumView = (view) => {
+      [albumLandingView, albumJuiceView, albumPaypalView].forEach(v => v.classList.remove('is-active'));
+      view.classList.add('is-active');
+      if (view === albumLandingView){
+        albumFormWrap.classList.remove('is-active');
+      } else {
+        albumFormWrap.classList.add('is-active');
+        revealNow(albumFormWrap);
+      }
+      revealNow(view);
+      // Render the PayPal hosted button lazily, only once its view is actually visible
+      // (PayPal's SDK needs a laid-out container — rendering into a display:none div fails).
+      if (view === albumPaypalView && !paypalRendered && window.paypal && document.getElementById('paypal-container-2YG2AU9TYDK3U')){
+        paypal.HostedButtons({ hostedButtonId: "2YG2AU9TYDK3U" }).render("#paypal-container-2YG2AU9TYDK3U");
+        paypalRendered = true;
+      }
+      if (albumBuySection){
+        const y = albumBuySection.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' });
+      }
+    };
+
+    const chooseJuiceBtn = document.getElementById('chooseJuiceBtn');
+    const choosePaypalBtn = document.getElementById('choosePaypalBtn');
+    if (chooseJuiceBtn) chooseJuiceBtn.addEventListener('click', () => showAlbumView(albumJuiceView));
+    if (choosePaypalBtn) choosePaypalBtn.addEventListener('click', () => showAlbumView(albumPaypalView));
+    document.querySelectorAll('[data-back-view]').forEach(btn => {
+      btn.addEventListener('click', () => showAlbumView(albumLandingView));
+    });
+  }
+
   /* ---------- Custom cursor ---------- */
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
