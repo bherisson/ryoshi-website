@@ -56,18 +56,8 @@
           <h1 class="section-title reveal-line" style="text-align:left">THE FORTH<br>KIND</h1>
           <p class="reveal-line" style="transition-delay:.1s">Not everyone has access to streaming platforms — so if you'd like to own The Forth Kind directly, here's how to get it straight from us, digitally.</p>
           <div class="album-pay-choices reveal-line" style="transition-delay:.15s">
-            <button type="button" class="album-pay-btn" id="chooseJuiceBtn" data-cursor="link">
-              <span class="album-pay-btn-icon album-pay-btn-icon--juice" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
-              </span>
-              Pay with MCB Juice
-            </button>
-            <button type="button" class="album-pay-btn" id="choosePaypalBtn" data-cursor="link">
-              <span class="album-pay-btn-icon album-pay-btn-icon--paypal" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2"/><path d="M2.5 10.5h19"/><path d="M6 15h4"/></svg>
-              </span>
-              Pay with PayPal
-            </button>
+            <button type="button" class="album-pay-btn album-pay-btn--juice" id="chooseJuiceBtn" data-cursor="link">Pay with MCB Juice</button>
+            <button type="button" class="album-pay-btn album-pay-btn--paypal" id="choosePaypalBtn" data-cursor="link">Pay with PayPal</button>
           </div>
         </div>
       </div>
@@ -97,7 +87,7 @@
           <span class="buy-step-num">2</span>
           <div class="buy-step-body">
             <h3>Send Proof of Payment</h3>
-            <p>Email a screenshot of your transfer to <a href="mailto:ryoshiofficial@gmail.com" data-cursor="link">ryoshiofficial@gmail.com</a>, or send it on WhatsApp <a href="https://wa.me/23057031439" target="_blank" rel="noopener" class="whatsapp-icon-link" data-cursor="link" aria-label="Send proof of payment on WhatsApp"><svg viewBox="0 0 32 32" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M16.001 3C9.373 3 4 8.373 4 15.001c0 2.386.633 4.622 1.735 6.554L4 29l7.62-1.688A11.94 11.94 0 0 0 16.001 27C22.629 27 28 21.629 28 15.001 28 8.373 22.629 3 16.001 3zm0 21.818a9.77 9.77 0 0 1-4.984-1.364l-.358-.213-4.522 1.002.968-4.41-.234-.372A9.8 9.8 0 0 1 6.182 15c0-5.42 4.4-9.818 9.819-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818zm5.36-7.354c-.294-.147-1.74-.858-2.01-.955-.27-.098-.467-.147-.664.147-.196.294-.76.955-.932 1.152-.171.196-.343.22-.637.073-.294-.147-1.24-.457-2.362-1.457-.873-.778-1.463-1.74-1.634-2.033-.171-.294-.018-.453.129-.6.132-.132.294-.343.441-.514.147-.171.196-.294.294-.49.098-.196.049-.368-.024-.514-.073-.147-.664-1.6-.91-2.192-.24-.577-.484-.5-.664-.51l-.566-.01c-.196 0-.514.073-.784.368-.27.294-1.03 1.007-1.03 2.455s1.055 2.846 1.202 3.043c.147.196 2.077 3.17 5.033 4.445.703.303 1.252.484 1.68.62.706.224 1.348.192 1.856.117.566-.085 1.74-.712 1.985-1.4.245-.688.245-1.278.171-1.4-.073-.123-.27-.196-.564-.343z"/></svg></a>.</p>
+            <p>Email a screenshot of your transfer to <a href="mailto:ryoshiofficial@gmail.com" data-cursor="link">ryoshiofficial@gmail.com</a>, or send it on <a href="https://wa.me/23057031439" target="_blank" rel="noopener" class="whatsapp-icon-link" data-cursor="link" aria-label="Send proof of payment on WhatsApp"><svg viewBox="0 0 32 32" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M16.001 3C9.373 3 4 8.373 4 15.001c0 2.386.633 4.622 1.735 6.554L4 29l7.62-1.688A11.94 11.94 0 0 0 16.001 27C22.629 27 28 21.629 28 15.001 28 8.373 22.629 3 16.001 3zm0 21.818a9.77 9.77 0 0 1-4.984-1.364l-.358-.213-4.522 1.002.968-4.41-.234-.372A9.8 9.8 0 0 1 6.182 15c0-5.42 4.4-9.818 9.819-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.421-4.398 9.818-9.818 9.818zm5.36-7.354c-.294-.147-1.74-.858-2.01-.955-.27-.098-.467-.147-.664.147-.196.294-.76.955-.932 1.152-.171.196-.343.22-.637.073-.294-.147-1.24-.457-2.362-1.457-.873-.778-1.463-1.74-1.634-2.033-.171-.294-.018-.453.129-.6.132-.132.294-.343.441-.514.147-.171.196-.294.294-.49.098-.196.049-.368-.024-.514-.073-.147-.664-1.6-.91-2.192-.24-.577-.484-.5-.664-.51l-.566-.01c-.196 0-.514.073-.784.368-.27.294-1.03 1.007-1.03 2.455s1.055 2.846 1.202 3.043c.147.196 2.077 3.17 5.033 4.445.703.303 1.252.484 1.68.62.706.224 1.348.192 1.856.117.566-.085 1.74-.712 1.985-1.4.245-.688.245-1.278.171-1.4-.073-.123-.27-.196-.564-.343z"/></svg>WhatsApp</a>.</p>
           </div>
         </li>
         <li class="buy-step reveal-line" style="transition-delay:.1s">

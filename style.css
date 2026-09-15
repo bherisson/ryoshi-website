@@ -1501,45 +1501,37 @@ button{ font-family: inherit; background:none; border:none; color:inherit; curso
 .album-pay-btn{
   display:inline-flex;
   align-items:center;
-  gap: 10px;
-  padding: 15px 24px;
-  background: transparent;
-  border: 1px solid var(--line);
+  padding: 15px 28px;
+  background: var(--fg);
+  border: none;
   border-radius: 4px;
-  color: var(--fg);
+  color: #fff;
   font-family: var(--font-body);
   font-size: 13px;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-weight: 600;
   cursor:pointer;
-  transition: border-color .3s, background .3s, transform .3s var(--ease);
+  transition: background .3s, transform .3s var(--ease);
 }
-.album-pay-btn:hover{ border-color: var(--fg); transform: translateY(-2px); }
-.album-pay-btn-icon{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  flex-shrink:0;
-}
-.album-pay-btn-icon--juice{ background: #ff6b35; color:#fff; }
-.album-pay-btn-icon--paypal{ background: #0070ba; color:#fff; }
+.album-pay-btn:hover{ transform: translateY(-2px); }
+.album-pay-btn--juice{ background: #e2452c; }
+.album-pay-btn--juice:hover{ background: #c83620; }
+.album-pay-btn--paypal{ background: #0070ba; }
+.album-pay-btn--paypal:hover{ background: #005a94; }
 
 .whatsapp-icon-link{
   display:inline-flex;
   align-items:center;
-  justify-content:center;
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  background: #25D366;
-  color:#fff;
+  gap: 6px;
+  color: #25D366;
+  font-weight: 600;
   vertical-align: middle;
-  margin-left: 2px;
-  transition: transform .3s var(--ease);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s;
 }
-.whatsapp-icon-link:hover{ transform: translateY(-2px); }
+.whatsapp-icon-link svg{ flex-shrink:0; }
+.whatsapp-icon-link:hover{ border-color: #25D366; }
 .album-buy-grid{
   display:grid;
   grid-template-columns: 280px 1fr;
